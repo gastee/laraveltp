@@ -13,7 +13,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('register');
+        return view('front/Register/register');
     }
 
     /**

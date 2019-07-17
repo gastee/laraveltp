@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('front/Index/index');
 });
 
-Route::get('/register', 'UsersController@create');
+Route::get('/register', 'UsersController@index');
 
 Route::post('/register', 'UsersController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@extends('front.template')
+@section('mainContent')
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -74,3 +75,4 @@
 
   </body>
 </html>
+@endsection

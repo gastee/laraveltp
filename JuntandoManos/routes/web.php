@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('front/Index/index');
 });
 
-Route::get('/register', 'UsersController@index');
-
-Route::post('/register', 'UsersController@store');
+// Route::get('/register', 'UsersController@index');
+//
+// Route::post('/register', 'UsersController@store');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

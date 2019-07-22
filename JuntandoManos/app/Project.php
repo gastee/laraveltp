@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proyect extends Model
 {
-    //
+  * The attributes that are mass assignable.
+  *
+  * @var array
+  */
+ protected $fillable = [
+     'ong_id', 'name', 'direction', 'cojntactname', 'contactphone','status', 'creationdate', 'description', 'image'
+ ];
 }

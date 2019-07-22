@@ -19,8 +19,8 @@ class DatabaseCreation extends Migration
           $table->string('username');
           $table->string('email')->unique();
           $table->string('password');
-          $table->string('pais');
-          $table->string('provincia');
+          $table->string('country');
+          $table->string('province');
           $table->string('avatar');
           $table->integer('ong_id')->nullable();
           $table->rememberToken();
@@ -60,7 +60,7 @@ class DatabaseCreation extends Migration
           $table->timestamps();
       });
 
-    
+
     }
 
     /**

@@ -101,6 +101,32 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="province" class="col-md-4 col-form-label text-md-right">Provincia:</label>
+
+                            <div class="col-md-6">
+                                <select id="province" name="province" class="form-control">
+                                  <option value="P1">Provincia 1</option>
+                                  <option value="P2">Provincia 2</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">Avatar:</label>
+
+                            <div class="col-md-6">
+                              <div class="custom-file">
+                                <input
+                                  type="file"
+                                  name="avatar"
+                                  class="custom-file-input"
+                                >
+                                <label class="custom-file-label">Elegir archivo</label>
+                              </div>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

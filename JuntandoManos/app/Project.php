@@ -11,6 +11,6 @@ class Proyect extends Model
   * @var array
   */
  protected $fillable = [
-     'ong_id', 'name', 'direction', 'cojntactname', 'contactphone','status', 'creationdate', 'description', 'image'
+     'ong_id', 'name', 'direction', 'contactname', 'contactphone','status', 'creationdate', 'description', 'image'
  ];
 }

@@ -13,7 +13,7 @@
                       <!-- Look Empresa -->
 
     <div class="collapse navbar-collapse" id="collapse_target">
-      <a class="navbar-brand" href="index.php"><img class="logo_JM" src="storage/img/logo_JM.png" height="50" width="50"></a>
+      <a class="navbar-brand" href="index.php"><img class="logo_JM" src="/storage/img/logo_JM.png" height="50" width="50"></a>
 
                       <!-- links navbar -->
 

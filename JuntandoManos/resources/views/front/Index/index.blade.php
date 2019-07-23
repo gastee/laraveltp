@@ -1,4 +1,5 @@
 @extends('front.template')
+@section('pageTitle', 'Home')
 @section('mainContent')
 <html lang="en" dir="ltr">
   <head>

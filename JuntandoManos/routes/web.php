@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('front/Index/index');
 });
 
+Route::get('/catalogue/index', function () {
+    return view('front/catalogue/index');
+});
+
 // Route::get('/register', 'UsersController@index');
 //
 // Route::post('/register', 'UsersController@store');

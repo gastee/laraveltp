@@ -7,7 +7,7 @@
                       <!-- Look Empresa -->
 
     <div class="collapse navbar-collapse" id="collapse_target">
-      <a class="navbar-brand" href="index.php"><img class="logo_JM" src="img/logo_JM.png" height="50" width="50"></a>
+      <a class="navbar-brand" href="index.php"><img class="logo_JM" src="/storage/img/logo_JM.png" height="50" width="50"></a>
 
                       <!-- links navbar -->
 
@@ -29,7 +29,7 @@
              <a class="dropdown-item" href="profile.php">Mi perfil</a>
            </div>
          </li>
-  
+
 
        <li class="navbar-nav dropdown">
          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target">Menu

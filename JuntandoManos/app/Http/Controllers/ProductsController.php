@@ -11,9 +11,18 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($category = null)
     {
-        //
+      // if ($category) {
+      //
+      // $products = Product::where('category_id', $category)->paginate(12);
+      // }
+      // else {
+      //   $products = Product::paginate(12);
+      // }
+      //
+      // return view('front.catalogue.index', compact('products', 'category'));
+      return view('front.catalogue.index');
     }
 
     /**
@@ -45,7 +54,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+      // $product = Product::find($id);
+      //
+      // return view('front.catalogue.show', compact('product'));
     }
 
     /**

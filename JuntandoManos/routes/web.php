@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/juntandomanos', 'ProjectsController@index');
+Route::get('/', function(){
+  return view('front.index');
+} );
 
 
-Route::get('/catalogue/index', function () {
-    return view('front/catalogue/index');
-});
+Route::get('/catalogue/index/{category?}', 'ProductsController@index');
 
 // Route::get('/register', 'UsersController@index');
 //

@@ -144,7 +144,7 @@ footer {
 
 .recepcion {
   align-self: auto;
-  background-image:url(../img/manos_home.jpg);
+  background-image:url('/storage/img/manos_home.jpg');
   background-repeat:no-repeat;
   background-size:cover;
   width: 100%;

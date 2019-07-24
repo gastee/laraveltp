@@ -50,6 +50,7 @@ class DatabaseCreation extends Migration
       });
       Schema::create('products', function (Blueprint $table) {
           $table->Increments('id');
+          $table->string('name');
           $table->integer('ong_id')->nullable();
           $table->integer('project_id')->nullable();
           $table->integer('user_id')->nullable();

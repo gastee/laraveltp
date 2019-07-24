@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/juntandomanos', 'ProjectsController@index');
+Route::get('/home', 'HomeController@index');<
+Route::get('/home/faq', 'HomeController@faq');
 
 
 Route::get('/catalogue/index', function () {

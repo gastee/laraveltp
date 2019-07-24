@@ -1,24 +1,25 @@
 @extends('front.template')
-@section('pageTitle', 'Home')
-@section('mainContent')
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
 
-    <section class="recepcion">
-      <div class="div_titulo_recepcion">
-        <h1 class="titulo_recepcion">Entre todos podemos ayudarnos para dar una mano a quien más lo necesita.</h1>
-      </div>
-    </section>
+@section('pageTitle', 'Página de inicio')
+
+@section('mainContent')
+
+<section class="recepcion">
+  <div class="div_titulo_recepcion">
+
+    <h1 class="titulo_recepcion">Entre todos podemos ayudarnos para dar una mano a quien más lo necesita.</h1>
 
   </div>
 
 </section>
+
+
   <div class="container">
+
+
 <hr>
+
+
         <!-- CARACTERISTICAS -->
 <section class="caracteristicas row">
   <!-- <h1 class="titulo_caracteristicas?"></h1> -->
@@ -74,6 +75,4 @@
 </div>
 </div>
 
-  </body>
-</html>
 @endsection

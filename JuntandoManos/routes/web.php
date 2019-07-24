@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front/Index/index');
-});
+Route::get('/juntandomanos', 'ProjectsController@index');
+
 
 Route::get('/catalogue/index', function () {
     return view('front/catalogue/index');
@@ -24,5 +23,3 @@ Route::get('/catalogue/index', function () {
 // Route::post('/register', 'UsersController@store');
 
 Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');

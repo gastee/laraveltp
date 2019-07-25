@@ -1,8 +1,8 @@
-<footer class="container-fluid text-center">
+    <footer class="container-fluid text-center">
       <div class="row">
 
         <div class="col-sm-4">
-            <img class="logofoot" src="img/logo_JM.png" alt="logo">
+            <img class="logofoot" src="/storage/img/logo_JM.png" alt="logo">
         </div>
 
         <div class="contacto col-sm-4">
@@ -21,3 +21,6 @@
       </div>
 
     </footer>
+
+  </body>
+</html>

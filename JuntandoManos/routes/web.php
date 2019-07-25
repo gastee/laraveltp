@@ -11,13 +11,26 @@
 |
 */
 
-Route::get('/home', 'HomeController@index');<
-Route::get('/home/faq', 'HomeController@faq');
+Route::get('/', 'ProjectsController@index');
+Route::get('/signup', 'ProjectsController@signup');
+Route::get('/login', 'ProjectsController@login');
+Route::get('/faq', 'ProjectsController@login');
 
 
-Route::get('/catalogue/index', function () {
-    return view('front/catalogue/index');
-});
+//user//
+Route::get('/contact', 'ProjectsController@contact');
+Route::get('/profile', 'ProjectsController@profile');
+Route::get('/udpate', 'ProjectsController@update');
+
+
+Route::get('/udpate', 'ProjectsController@update');
+Route::get('/udpate', 'ProjectsController@update');
+
+
+
+
+
+Route::get('/catalogue/index/{category?}', 'ProductsController@index');
 
 // Route::get('/register', 'UsersController@index');
 //

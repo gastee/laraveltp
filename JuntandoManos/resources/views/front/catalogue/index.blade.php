@@ -3,7 +3,7 @@
 @section('mainContent')
 <body >
 
-
+{{-- {{ dd($products, $category) }} --}}
   <!-- Page Content -->
 
     <div class="row">

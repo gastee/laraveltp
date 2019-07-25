@@ -11,9 +11,14 @@ $factory->define(Product::class, function (Faker $faker) {
     $filePath = storage_path('app/public/products');
 
     return [
-      'name' => $faker->sentence(20, true),
-      'price' => $faker->randomFloat(2, 100, 999999),
-      'image' => $faker->imageUrl(200, 200, 'abstract'),
+      'name' => $faker->sentence(10, true),
+      'image' => $faker->imageUrl(400, 400, 'abstract'),
       // 'image' => $faker->image($filePath, 400, 300, null, false)
     ];
 });
+
+  $product = factory(App\Product::class)->make();
+  $product->save();
+
+  factory(App\Product::class)->create();
+  factory(App\Product::class)->times(10)->create();

@@ -22,11 +22,11 @@ class DatabaseCreation extends Migration
           $table->string('country');
           $table->string('province');
           $table->string('avatar');
-          $table->integer('ong_id')->nullable();
+          $table->integer('organization_id')->nullable();
           $table->rememberToken();
           $table->timestamps();
       });
-      Schema::create('ongs', function (Blueprint $table) {
+      Schema::create('organizations', function (Blueprint $table) {
           $table->Increments('id');
           $table->string('name');
           $table->string('admin');
@@ -37,13 +37,12 @@ class DatabaseCreation extends Migration
       });
       Schema::create('projects', function (Blueprint $table) {
           $table->Increments('id');
-          $table->integer('ong_id');
+          $table->integer('organization_id');
           $table->string('name');
           $table->string('direction')->nullable();
-          $table->string('contactname')->nullable();
-          $table->string('contactphone')->nullable();
+          $table->string('contact_name')->nullable();
+          $table->string('contact_phone')->nullable();
           $table->string('status');
-          $table->DateTime('creationdate');
           $table->text('description')->nullable();
           $table->string('image')->nullable();
           $table->timestamps();
@@ -51,13 +50,18 @@ class DatabaseCreation extends Migration
       Schema::create('products', function (Blueprint $table) {
           $table->Increments('id');
           $table->string('name');
-          $table->integer('ong_id')->nullable();
+          $table->integer('organization_id')->nullable();
           $table->integer('project_id')->nullable();
           $table->integer('user_id')->nullable();
-          $table->string('category');
+          $table->string('category_id');
           $table->string('status');
-          $table->DateTime('creationdate');
           $table->string('image')->nullable();
+          $table->timestamps();
+      });
+      Schema::create('categories', function (Blueprint $table) {
+          $table->Increments('id');
+          $table->string('name');
+          $table->integer('product_id')->nullable();
           $table->timestamps();
       });
 

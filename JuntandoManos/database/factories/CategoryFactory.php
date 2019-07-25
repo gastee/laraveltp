@@ -17,5 +17,12 @@ $factory->define(Model::class, function (Faker $faker) {
 				'Mobiliario',
         'Insumos',
         'Alimentos',
+      ])
     ];
 });
+
+$category = factory(App\Category::class)->make();
+$category->save();
+
+factory(App\Category::class)->create();
+factory(App\Category::class)->times(10)->create();

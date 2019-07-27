@@ -15,8 +15,14 @@ class Product extends Model
 
   public function user()
   {
-    return $this->hasOne(User::class);
+    return $this->belonsTo(User::class);
   }
+
+  public function Project()
+  {
+    return $this->belonsTo(Project::class);
+  }
+}
 	// public function user()
 	// {
 	// 	return $this->belongsTo(User::class);

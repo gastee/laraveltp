@@ -11,7 +11,7 @@ class Project extends Model
   // * @var array
   // */
  protected $fillable = [
-     'ong_id', 'name', 'direction', 'contact_name', 'contact_phone','status', 'description', 'image'
+     'organization_id', 'name', 'direction', 'contact_name', 'contact_phone','status', 'description', 'image'
  ];
 
  public function product()

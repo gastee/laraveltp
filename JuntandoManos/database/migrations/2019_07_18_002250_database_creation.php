@@ -15,8 +15,8 @@ class DatabaseCreation extends Migration
     {
       Schema::create('users', function (Blueprint $table) {
           $table->Increments('id');
-          $table->string('name');
-          $table->string('username');
+          $table->string('name', 100);
+          $table->string('username', 100);
           $table->string('email')->unique();
           $table->string('password');
           $table->string('country');
@@ -29,7 +29,7 @@ class DatabaseCreation extends Migration
       Schema::create('organizations', function (Blueprint $table) {
           $table->Increments('id');
           $table->string('name');
-          $table->string('admin');
+          $table->string('admin')->nullable();
           $table->string('email')->unique();
           $table->string('adress')->nullable();
           $table->string('phone')->nullable();
@@ -37,12 +37,12 @@ class DatabaseCreation extends Migration
       });
       Schema::create('projects', function (Blueprint $table) {
           $table->Increments('id');
-          $table->integer('organization_id');
+          $table->integer('organization_id')->nullable();
           $table->string('name');
           $table->string('direction')->nullable();
           $table->string('contact_name')->nullable();
           $table->string('contact_phone')->nullable();
-          $table->string('status');
+          $table->string('status')->nullable();
           $table->text('description')->nullable();
           $table->string('image')->nullable();
           $table->timestamps();
@@ -53,8 +53,8 @@ class DatabaseCreation extends Migration
           $table->integer('organization_id')->nullable();
           $table->integer('project_id')->nullable();
           $table->integer('user_id')->nullable();
-          $table->string('category_id');
-          $table->string('status');
+          $table->string('category_id')->nullable();
+          $table->string('status')->nullable();
           $table->string('image')->nullable();
           $table->timestamps();
       });
@@ -77,7 +77,7 @@ class DatabaseCreation extends Migration
     {
         Schema::dropIfExists('products');
         Schema::dropIfExists('projects');
-        Schema::dropIfExists('ongs');
+        Schema::dropIfExists('organizations');
         Schema::dropIfExists('users');
 
     }

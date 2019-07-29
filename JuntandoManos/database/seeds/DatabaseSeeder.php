@@ -17,13 +17,21 @@ class DatabaseSeeder extends Seeder
   			$products = factory(App\Product::class)->times(5)->create();
   			$categories = factory(App\Category::class)->times(5)->create();
         $projects = factory(App\Project::class)->times(5)->create();
+        $organizations = factory(App\Organization::class)->times(5)->create();
 
         foreach ($products as $oneProduct) {
   				$oneProduct->user()->associate($users->random(1)->first()->id);
   				$oneProduct->category()->associate($categories->random(1)->first()->id);
           $oneProduct->project()->associate($projects->random(1)->first()->id);
   				$oneProduct->save();
-
-  			}
+          }
+        foreach ($projects as $oneProject) {
+  				$oneProject->Organization()->associate($organizations->random(1)->first()->id);
+  				$oneProject->save();
+          }
+        foreach ($organizations as $oneONG) {
+          $oneONG->user()->associate($users->random(1)->first()->id);
+  				$oneONG->save();
+  				}
     }
 }

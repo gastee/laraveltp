@@ -29,8 +29,8 @@ class DatabaseCreation extends Migration
       Schema::create('organizations', function (Blueprint $table) {
           $table->Increments('id');
           $table->string('name');
-          $table->string('admin')->nullable();
-          $table->string('email')->unique();
+          $table->integer('user_id')->nullable();
+          $table->string('email')->unique()->nullable();
           $table->string('adress')->nullable();
           $table->string('phone')->nullable();
           $table->timestamps();
@@ -50,10 +50,10 @@ class DatabaseCreation extends Migration
       Schema::create('products', function (Blueprint $table) {
           $table->Increments('id');
           $table->string('name');
-          $table->integer('organization_id')->nullable();
+          // $table->integer('organization_id')->nullable();
           $table->integer('project_id')->nullable();
           $table->integer('user_id')->nullable();
-          $table->string('category_id')->nullable();
+          $table->integer('category_id')->nullable();
           $table->string('status')->nullable();
           $table->string('image')->nullable();
           $table->timestamps();
@@ -61,6 +61,12 @@ class DatabaseCreation extends Migration
       Schema::create('categories', function (Blueprint $table) {
           $table->Increments('id');
           $table->string('name');
+          // $table->integer('product_id')->nullable();
+          $table->timestamps();
+      });
+      Schema::create('categories_products', function (Blueprint $table) {
+          $table->Increments('id');
+          $table->integer('category_id')->nullable();
           $table->integer('product_id')->nullable();
           $table->timestamps();
       });
@@ -75,6 +81,8 @@ class DatabaseCreation extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('categories_products');
+        Schema::dropIfExists('categories');
         Schema::dropIfExists('products');
         Schema::dropIfExists('projects');
         Schema::dropIfExists('organizations');

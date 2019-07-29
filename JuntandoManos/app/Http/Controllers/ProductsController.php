@@ -22,8 +22,8 @@ class ProductsController extends Controller
       //   $products = Product::paginate(12);
       // }
       //
-      // return view('front.catalogue.index', compact('products', 'category'));
-      return view('front.catalogue.index');
+      // return view('front.products.index', compact('products', 'category'));
+      return view('front.products.index');
     }
 
     /**
@@ -57,7 +57,7 @@ class ProductsController extends Controller
     {
       // $product = Product::find($id);
       //
-      // return view('front.catalogue.show', compact('product'));
+      // return view('front.products.show', compact('product'));
     }
 
     /**
@@ -92,5 +92,15 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function projectProducts($project_id)
+    {
+
+      // $products = Product::where('project_id', $project_id->paginate(12);
+
+      //
+      // return view('front.products.index', compact('products', 'category'));
+      return view('front.project.index');
     }
 }

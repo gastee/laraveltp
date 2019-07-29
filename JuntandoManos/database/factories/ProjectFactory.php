@@ -1,14 +1,14 @@
 <?php
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
-
+use App\Project;
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Project::class, function (Faker $faker) {
 
       return [
-        'name' => $faker->unique()->randomElement([
+        'name' => $faker->randomElement([
   				'Comedor Las Pepas',
   			  'Escuela EP Nro 6 - La Matanza',
   			  'Familia Pérez - Incendio',

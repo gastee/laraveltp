@@ -1,11 +1,11 @@
 <?php
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
-
+use App\Category;
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Category::class, function (Faker $faker) {
     return [
       'name' => $faker->unique()->randomElement([
 				'Tecnología',
@@ -20,7 +20,7 @@ $factory->define(Model::class, function (Faker $faker) {
       ])
     ];
 });
-// 
+//
 // $category = factory(App\Category::class)->make();
 // $category->save();
 //

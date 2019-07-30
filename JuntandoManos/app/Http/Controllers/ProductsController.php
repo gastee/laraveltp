@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Product;
+use App\Product;
+use App\Category;
+use App\Project;
 
 class ProductsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,16 +17,19 @@ class ProductsController extends Controller
      */
     public function index($category = null)
     {
-      // if ($category) {
-      //
-      // $products = Product::where('category_id', $category)->paginate(12);
-      // }
-      // else {
-      //   $products = Product::paginate(12);
-      // }
-      //
-      // return view('front.products.index', compact('products', 'category'));
-      return view('front.products.index');
+      if ($category) {
+
+      $products = Product::where('category_id', $category)->paginate(6);
+      }
+      else {
+        $products = Product::paginate(6);
+      }
+
+      $categories = Category::all();
+      $projects = Project::all();
+
+      return view('front.products.index', compact('products', 'category', 'categories', 'projects'));
+      // return view('front.products.index');
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Project;
+use App\Organization;
 
 class ProductsController extends Controller
 {
@@ -26,9 +27,10 @@ class ProductsController extends Controller
       }
 
       $categories = Category::all();
-      $projects = Project::all();
+      $allprojects = Project::all();
+      $projects = [];
 
-      return view('front.products.index', compact('products', 'category', 'categories', 'projects'));
+      return view('front.products.index', compact('products', 'category', 'categories', 'allprojects', 'projects'));
       // return view('front.products.index');
     }
 
@@ -108,5 +110,20 @@ class ProductsController extends Controller
       //
       // return view('front.products.index', compact('products', 'category'));
       return view('front.project.index');
+    }
+
+    public function search(Request $request)
+    {
+      $search = $request -> input('search');
+
+      $products = Product::where('name','LIKE',"%$search%")->paginate(6);
+      $projects = Project::where('name','LIKE',"%$search%")->paginate(6);
+
+      $categories = Category::all();
+      $allprojects = Project::all();
+
+      // return view('front.products.index', compact('products', 'categories', 'allprojects'));
+      return view('front.products.index', compact('products', 'categories', 'projects', 'allprojects'));
+      // return view('front.products.index');
     }
 }

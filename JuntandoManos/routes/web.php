@@ -31,6 +31,7 @@ Route::get('/udpate', 'ProjectsController@update');
 
 
 Route::get('/catalogue/index/{category?}', 'ProductsController@index');
+Route::post('/catalogue/index/{category?}', 'ProductsController@search');
 
 // Route::get('/register', 'UsersController@index');
 //

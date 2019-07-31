@@ -13,7 +13,7 @@
                       <!-- Look Empresa -->
 
     <div class="collapse navbar-collapse" id="collapse_target">
-      <a class="navbar-brand" href="/"><img class="logo_JM" src="/storage/img/logo_JM.png" height="50" width="50"></a>
+      <a class="navbar-brand" href="/"><img class="logo_JM" src="/img/logo_JM.png" height="50" width="50"></a>
 
                       <!-- links navbar -->
 
@@ -51,9 +51,11 @@
           <div class="dropdown-divider"></div>
           <a href="contacto.php" class="dropdown-item">Contacto</a>
           <a href="faq.php" class="dropdown-item">FAQ</a>
-          <a href="catalogo.php" class="dropdown-item">Catálogo</a>
+          <a href="/catalogue/index" class="dropdown-item">Catálogo</a>
         </div>
        </li>
+
+       
 
     </div>
  </nav>

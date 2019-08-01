@@ -3,7 +3,7 @@
 @section('mainContent')
 <body >
 
-{{-- {{ dd($products, $category) }} --}}
+{{-- {{ dd($products) }} --}}
   <!-- Page Content -->
 
     <div class="row">
@@ -41,9 +41,6 @@
                                   <form class="card card-sm" method="post">
                                      @csrf
                                       <div class="card-body row no-gutters align-items-center">
-                                          <div class="col-auto">
-                                              <i class="fas fa-search h4 text-body"></i>
-                                          </div>
                                           <!--end of col-->
                                           <div class="col">
                                               <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Buscar productos o proyectos" name= 'search'>
@@ -93,13 +90,13 @@
           <h1 class="my-4">Productos</h1>
         <div class="row">
           @foreach ($products as $oneProduct)
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" name='eachproduct' >
             <li>
-            <div class="card h-100">
+            <div class="card h-100"  id='producto' >
               <a href="#"><img class="card-img-top" src={{$oneProduct->image}} alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">{{$oneProduct->name}}</a>
+                  <p href="#">{{$oneProduct->name}}</p>
                 </h4>
                 <p class="card-text">Categoría: {{$oneProduct->category->name}}</p>
                 <p class="card-text">Proyecto: {{$oneProduct->project->name}}</p>
@@ -129,7 +126,7 @@
               <a href="#"><img class="card-img-top" src='https://lorempixel.com/200/200/abstract/?10392' alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">{{$oneProject->name}}</a>
+                  <p href="#">{{$oneProject->name}}</p>
                 </h4>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </p>
                 <p class="card-text">{{$oneProject->organization->name}}</p>
@@ -146,6 +143,28 @@
   </ul>
     @endif
 
+    <script type="text/javascript">
+        var allPdtos = document.querySelectorAll("[name=eachproduct]");
+        allPdtos.forEach(function (onePdto) {
+          onePdto.addEventListener("click", function () {
+            var contenidoHTML = this.innerHTML;
+            var overlay = document.getElementById("overlay");
+            var overlay2 = document.getElementById("overlay2");
+            overlay2.innerHTML = contenidoHTML;
+            overlay.style.display = "block";
+            overlay2.querySelector("li").style.width = "25%";
+            overlay.querySelector("li").style.overflow = "hidden";
+            overlay2.querySelector("li").addEventListener("click", function () {
+              overlay.style.display = "none";
+            }).bind();
+          })
+        });
+      </script>
+    <div class="">
+      @include('front.productview')
+    </div>
+
+
 
         <!-- /.row -->
 
@@ -157,6 +176,33 @@
 
   </div>
   <!-- /.container -->
+  @include('front.productview')
+
+  <script type="text/javascript">
+      var allPdtos = document.querySelectorAll("[name=eachproduct]");
+      allPdtos.forEach(function (onePdto) {
+        onePdto.addEventListener("click", function () {
+          var contenidoHTML = this.innerHTML;
+          var overlay = document.getElementById("overlay");
+          var overlay2 = document.getElementById("overlay2");
+          overlay2.innerHTML = contenidoHTML;
+          if (overlay.style.display == "none") {
+            overlay.style.display = "block";
+            overlay2.style.display = "block";
+            }
+          });
+        })
+
+        // var overlay = document.getElementById("overlay");
+          overlay.addEventListener("click", function (e) {
+            var click = e.target;
+            if(overlay.style.display == "block" && click != overlay2){
+              overlay.style.display = "none";
+              overlay2.style.display = "none";
+              console.log(click);
+            }
+                });
+    </script>
 
 
   <!-- Bootstrap core JavaScript -->

@@ -20,27 +20,32 @@
      <ul class="navbar-nav">
         @if  (!Auth::check())
          <li class="nav-item">
-           <a href="login.php" class="nav-link">Ingresar</a>
+           <a href="/login" class="nav-link">Ingresar</a>
          </li>
          <li class="nav-item">
-           <a href="signup.php" class="nav-link">Registrarse</a>
+           <a href="/register" class="nav-link">Registrarse</a>
          </li>
        </ul>
 
      @else
        <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" href="profile.php" id="dropNavBar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <a class="nav-link dropdown-toggle" href="/profile" id="dropNavBar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            @if (session('status'))
             {{ Auth::user()->username }}
            @endif
            </a>
            <div class="dropdown-menu" aria-labelledby="dropNavBar">
+<<<<<<< HEAD
              <a class="dropdown-item" href="logout.php">Salir</a>
              <form class="" action="logout" method="post">
                @csrf
                <button type="submit" name="button">salir</button>
              </form>
              <a class="dropdown-item" href="profile.php">Mi perfil</a>
+=======
+             <a class="dropdown-item" href="/logout">Salir</a>
+             <a class="dropdown-item" href="/profile">Mi perfil</a>
+>>>>>>> b04896d45f661794abdfdd963141f9f08e5dad32
            </div>
          </li>
         @endif
@@ -51,15 +56,18 @@
          </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdown_target">
-          <a href="index.php" class="dropdown-item">Nosotros</a>
+          <a href="/" class="dropdown-item">Nosotros</a>
           <div class="dropdown-divider"></div>
-          <a href="contacto.php" class="dropdown-item">Contacto</a>
-          <a href="faq.php" class="dropdown-item">FAQ</a>
-          <a href="/catalogue/index" class="dropdown-item">Catálogo</a>
+          <a href="/contact" class="dropdown-item">Contacto</a>
+          <a href="/faq" class="dropdown-item">FAQ</a>
+          <a href="/catalogue/index/" class="dropdown-item">Catálogo</a>
         </div>
        </li>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b04896d45f661794abdfdd963141f9f08e5dad32
     </div>
  </nav>

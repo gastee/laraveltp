@@ -2,9 +2,9 @@
 
 @section('mainContent')
 <div class="container">
-    @foreach ($errors->all() as $error)
+    {{-- @foreach ($errors->all() as $error)
      {{ $error }} <br>
-    @endforeach
+    @endforeach --}}
 
     <div class="row justify-content-center">
         <div class="col-md-8">

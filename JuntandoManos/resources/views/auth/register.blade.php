@@ -2,9 +2,6 @@
 
 @section('mainContent')
 <div class="container">
-    @foreach ($errors->all() as $error)
-     {{ $error }} <br>
-    @endforeach
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -180,4 +177,7 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="/js/validateUserCreate.js"></script>
+
 @endsection

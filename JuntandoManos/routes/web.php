@@ -38,3 +38,7 @@ Route::post('/catalogue/index/{category?}', 'ProductsController@search');
 // Route::post('/register', 'UsersController@store');
 
 Auth::routes();
+
+Route::get("/home", function () {
+  return redirect("/");
+});

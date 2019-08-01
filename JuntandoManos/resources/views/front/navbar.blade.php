@@ -36,6 +36,10 @@
            </a>
            <div class="dropdown-menu" aria-labelledby="dropNavBar">
              <a class="dropdown-item" href="logout.php">Salir</a>
+             <form class="" action="logout" method="post">
+               @csrf
+               <button type="submit" name="button">salir</button>
+             </form>
              <a class="dropdown-item" href="profile.php">Mi perfil</a>
            </div>
          </li>
@@ -55,7 +59,7 @@
         </div>
        </li>
 
-       
+
 
     </div>
  </nav>

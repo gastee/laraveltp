@@ -1,37 +1,38 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+//misc//
 
 Route::get('/', 'ProjectsController@index');
 Route::get('/signup', 'ProjectsController@signup');
 Route::get('/login', 'ProjectsController@login');
-Route::get('/faq', 'ProjectsController@login');
+Route::get('/faq', 'ProjectsController@faq');
 
 
-//user//
+//users//
+
 Route::get('/contact', 'ProjectsController@contact');
 Route::get('/profile', 'ProjectsController@profile');
-Route::get('/udpate', 'ProjectsController@update');
-
-
-Route::get('/udpate', 'ProjectsController@update');
-Route::get('/udpate', 'ProjectsController@update');
+Route::get('/udpate/{id}', 'ProjectsController@update');
 
 
 
+//products//
+
+Route::get('/catalogue/{category?}', 'ProductsController@index');
+Route::get('/product/{id}', 'ProductsController@');
+Route::get('/product/create', 'ProjectsController@create');
+Route::get('/product/update/{id}', 'ProjectsController@update');
+
+
+
+//proyectos//
+
+Route::get('/projects', 'ProductsController@');
+Route::get('/projects/{id}', 'ProductsController@');
+Route::get('/projects/create', 'ProjectsController@');
+Route::get('/projects/update/{id}', 'ProjectsController@');
 
 
 Route::get('/catalogue/index/{category?}', 'ProductsController@index');
-Route::post('/catalogue/index/{category?}', 'ProductsController@search');
 
 // Route::get('/register', 'UsersController@index');
 //

@@ -7,8 +7,8 @@
 
         <div class="contacto col-sm-4">
           <h3>
-            <a href="contacto.php">Contacto</a>
-            <a class="bordes" "nav-link" href="faq.php">FAQ</a>
+            <a href="/contact">Contacto</a>
+            <a class="bordes" "nav-link" href="/faq">FAQ</a>
             <a href="#">lorem</a>
           </h3>
         </div>
@@ -21,6 +21,3 @@
       </div>
 
     </footer>
-
-  </body>
-</html>

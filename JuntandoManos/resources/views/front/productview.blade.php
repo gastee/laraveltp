@@ -1,34 +1,37 @@
 
   <style>
+.overlay2 {
+      position: fixed;
+    width: 30%;
+    height: 20%;
+    right: 35%;
+    vertical-align: middle;
+    align:center;
+    /* top: 10%; */
+    background-color: transparent;
+    z-index: 2000;
+    cursor: pointer;
+    text-align: center;
+    color: transparent;
+    border-color: transparent;
+  }
 .overlay {
-    position: fixed;
+    position:fixed;
     align: center;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1000;
-    cursor: pointer;
-  }
-.overlay2 {
-    position:relative;
-    /* align: center; */
-    width: 70%;
-    height: 70%;
-    /* top: 25%;
-    left: 25%; */
     /* right: 25%;
     bottom: 25%; */
-    background-color: rgba(100,0,0,0.5);
-    z-index: 2000;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
     cursor: pointer;
   }
   </style>
 
 <div class="overlay" id="overlay" style="display: none;">
+{{-- <div class="overlay" id="overlay"> --}}
 
     <div class="card h-100 overlay2" id="overlay2">
         {{-- <a href=""><img class="card-img-top" src={{$oneProduct->image}} alt=""></a>
@@ -45,7 +48,7 @@
     </div>
   </div>
 
-    <script>
+    {{-- <script>
     function on() {
       document.getElementById("overlay").style.display = "block";
     }
@@ -53,4 +56,4 @@
     function off() {
       document.getElementById("overlay").style.display = "none";
     }
-    </script>
+    </script> --}}

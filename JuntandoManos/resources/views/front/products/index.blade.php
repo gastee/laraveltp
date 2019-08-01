@@ -143,6 +143,26 @@
   </ul>
     @endif
 
+    <script type="text/javascript">
+        var allPdtos = document.querySelectorAll("[name=eachproduct]");
+        allPdtos.forEach(function (onePdto) {
+          onePdto.addEventListener("click", function () {
+            var contenidoHTML = this.innerHTML;
+            var overlay = document.getElementById("overlay");
+            var overlay2 = document.getElementById("overlay2");
+            overlay2.innerHTML = contenidoHTML;
+            overlay.style.display = "block";
+            overlay2.querySelector("li").style.width = "25%";
+            overlay.querySelector("li").style.overflow = "hidden";
+            overlay2.querySelector("li").addEventListener("click", function () {
+              overlay.style.display = "none";
+            }).bind();
+          })
+        });
+      </script>
+    <div class="">
+      @include('front.productview')
+    </div>
 
 
 

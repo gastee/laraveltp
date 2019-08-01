@@ -2,12 +2,10 @@
 
 @section('mainContent')
 <div class="container">
-<<<<<<< HEAD
-=======
+
     {{-- @foreach ($errors->all() as $error)
      {{ $error }} <br>
     @endforeach --}}
->>>>>>> b04896d45f661794abdfdd963141f9f08e5dad32
 
     <div class="row justify-content-center">
         <div class="col-md-8">

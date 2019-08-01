@@ -28,26 +28,28 @@
        </ul>
 
      @else
-       <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" href="/profile" id="dropNavBar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           @if (session('status'))
-            {{ Auth::user()->username }}
+       <li class="navbar-nav dropdown">
+         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target">
+           Usuario:
+           @if (Auth::check())
+             {{ Auth::user()->username }}
            @endif
-           </a>
-           <div class="dropdown-menu" aria-labelledby="dropNavBar">
-<<<<<<< HEAD
-             <a class="dropdown-item" href="logout.php">Salir</a>
-             <form class="" action="logout" method="post">
-               @csrf
-               <button type="submit" name="button">salir</button>
-             </form>
-             <a class="dropdown-item" href="profile.php">Mi perfil</a>
-=======
-             <a class="dropdown-item" href="/logout">Salir</a>
-             <a class="dropdown-item" href="/profile">Mi perfil</a>
->>>>>>> b04896d45f661794abdfdd963141f9f08e5dad32
-           </div>
+           <span class="caret"></span>
+         </a>
+         <div class="dropdown-menu" aria-labelledby="dropdown_target">
+           <a href="/profile" class="dropdown-item">Mi Perfil</a>
+           <div class="dropdown-divider"></div>
+           <a href="#" class="dropdown-item">
+           <form class="" action="logout" method="post">
+             @csrf
+             <button type="submit" name="button">Logout</button>
+           </form>
+         </a>
+
+         </div>
+
          </li>
+
         @endif
 
        <li class="navbar-nav dropdown">
@@ -59,15 +61,12 @@
           <a href="/" class="dropdown-item">Nosotros</a>
           <div class="dropdown-divider"></div>
           <a href="/contact" class="dropdown-item">Contacto</a>
+          <div class="dropdown-divider"></div>
           <a href="/faq" class="dropdown-item">FAQ</a>
+          <div class="dropdown-divider"></div>
           <a href="/catalogue/index/" class="dropdown-item">Catálogo</a>
         </div>
        </li>
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> b04896d45f661794abdfdd963141f9f08e5dad32
     </div>
  </nav>

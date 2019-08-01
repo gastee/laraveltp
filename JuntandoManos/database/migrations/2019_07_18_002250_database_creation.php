@@ -20,7 +20,7 @@ class DatabaseCreation extends Migration
           $table->string('email')->unique();
           $table->string('password');
           $table->string('country');
-          $table->string('province');
+          // $table->string('province')->nullable();
           $table->string('avatar');
           $table->integer('organization_id')->nullable();
           $table->rememberToken();

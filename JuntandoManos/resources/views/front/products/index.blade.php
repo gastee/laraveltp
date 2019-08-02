@@ -2,7 +2,7 @@
 @section('pageTitle', 'Catálogo')
 @section('mainContent')
 <body >
-
+<div class="container">
 {{-- {{ dd($products) }} --}}
   <!-- Page Content -->
 
@@ -84,6 +84,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div> --}}
+        @include('front.productview')
 
 @if (count($products)>1)
         <ul>
@@ -94,15 +95,17 @@
             <li>
             <div class="card h-100"  id='producto' >
               <a href="#"><img class="card-img-top" src={{$oneProduct->image}} alt=""></a>
-              <div class="card-body">
+              <div class="card-body"  id="datosProducto">
                 <h4 class="card-title">
                   <p href="#">{{$oneProduct->name}}</p>
                 </h4>
                 <p class="card-text">Categoría: {{$oneProduct->category->name}}</p>
                 <p class="card-text">Proyecto: {{$oneProduct->project->name}}</p>
               </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              <div class="card-footer" style="text-align: center">
+                <div class="col-auto">
+                    <button class="btn btn-lg btn-success" type="submit" >DONAR</button>
+                </div>
               </div>
             </div>
           </li>
@@ -153,7 +156,6 @@
 
   </div>
   <!-- /.container -->
-  @include('front.productview')
 
   <script type="text/javascript">
       var allPdtos = document.querySelectorAll("[name=eachproduct]");
@@ -163,9 +165,18 @@
           var overlay = document.getElementById("overlay");
           var overlay2 = document.getElementById("overlay2");
           overlay2.innerHTML = contenidoHTML;
+
           if (overlay.style.display == "none") {
             overlay.style.display = "block";
             overlay2.style.display = "block";
+            var datosProducto = overlay2.getElementsByTagName('li')[0].getElementsByTagName('div')[0].getElementsByTagName('div')[0];
+            var imagenProducto = overlay2.getElementsByTagName('li')[0].getElementsByTagName('div')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+            // .querySelector('datosProducto');
+            // datosProducto.innerHTML += "<br>lalsalsalsalasdl<br>";
+            datosProducto.style.height = "25vh";
+            datosProducto.style.overflow = "hidden";
+            imagenProducto.style.maxHeight = "60vh";
+
             }
           });
         })

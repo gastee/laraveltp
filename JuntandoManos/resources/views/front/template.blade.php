@@ -15,7 +15,7 @@
 
 		@include('front.navbar')
 
-		<div class="container">
+		{{-- <div class="container"> --}}
 			@yield('mainContent')
 		</div>
 

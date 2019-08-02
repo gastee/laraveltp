@@ -3,7 +3,7 @@
 @section('pageTitle', 'FAQ')
 
 @section('mainContent')
-
+<div class="container">
     <div class="contact">
       <form>
         <p>

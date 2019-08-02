@@ -1,19 +1,20 @@
 
   <style>
 .overlay2 {
-      position: fixed;
-    width: 30%;
-    height: 20%;
-    right: 35%;
-    vertical-align: middle;
-    align:center;
-    /* top: 10%; */
-    background-color: transparent;
-    z-index: 2000;
-    cursor: pointer;
-    text-align: center;
-    color: transparent;
-    border-color: transparent;
+  position: fixed;
+  width: 35%;
+  height: 60%;
+  right: 32%;
+  /* vertical-align: middle; */
+  align: center;
+   top: 2%;
+  bottom: 15%;
+  background-color: transparent;
+  z-index: 2000;
+  cursor: pointer;
+  text-align: center;
+  color: transparent;
+  border-color: transparent;
   }
 .overlay {
     position:fixed;
@@ -33,7 +34,8 @@
 <div class="overlay" id="overlay" style="display: none;">
 {{-- <div class="overlay" id="overlay"> --}}
 
-    <div class="card h-100 overlay2" id="overlay2">
+</div>
+    <div class="card h-100 overlay2" id="overlay2" style="display: none;">
         {{-- <a href=""><img class="card-img-top" src={{$oneProduct->image}} alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
@@ -45,7 +47,6 @@
         <div class="card-footer">
           <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
         </div> --}}
-    </div>
   </div>
 
     {{-- <script>

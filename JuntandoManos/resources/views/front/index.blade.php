@@ -3,7 +3,6 @@
 @section('pageTitle', 'Juntando Manos')
 
 @section('mainContent')
-
 <section class="recepcion">
   <div class="div_titulo_recepcion">
 

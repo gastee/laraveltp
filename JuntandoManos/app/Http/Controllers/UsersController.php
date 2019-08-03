@@ -26,6 +26,11 @@ class UsersController extends Controller
         return view('register');
     }
 
+    public function profile()
+    {
+        return view('front.user.profile');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -68,7 +73,13 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $user = \App\User::find($id);
+      $user->name = $request->input('name');
+
+      //hacer todos los campos y copiar los campos de register controllers para update
+      $user->save();
+
+      return redirect('/profile');
     }
 
     /**

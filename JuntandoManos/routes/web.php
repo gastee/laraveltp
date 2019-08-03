@@ -10,9 +10,8 @@ Route::get('/contact', 'HomeController@contact');
 
 //users//
 
-Route::get('/profile', 'ProjectsController@profile');
-Route::get('/udpate/{id}', 'ProjectsController@update');
-
+Route::get('/profile', 'UsersController@profile');
+Route::put('/users/update/{id}', 'UsersController@update')->name('usersUpdate');
 
 
 //products//

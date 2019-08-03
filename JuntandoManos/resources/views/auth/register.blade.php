@@ -86,65 +86,37 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="country" class="col-md-4 col-form-label text-md-right">Barrio</label>
+                            <label for="country" class="col-md-4 col-form-label text-md-right">Pais</label>
 
                             <div class="col-md-6">
                                 <select id="country" name="country" class="form-control">
-                                  <option value="">Elegi uno</option>
-                                  <option value="Agronomia">Agronomia</option>
-                                  <option value="Almagro">Almagro</option>
-                                  <option value="Balvanera">Balvanera</option>
-                                  <option value="Barracas">Barracas</option>
-                                  <option value="Belgrano">Belgrano</option>
-                                  <option value="Boedo">Boedo</option>
-                                  <option value="Caballito">Caballito</option>
-                                  <option value="Chacarita">Chacarita</option>
-                                  <option value="Coghlan">Coghlan</option>
-                                  <option value="Colegiales">Colegiales</option>
-                                  <option value="Constitucion">Constitucion</option>
-                                  <option value="Flores">Flores</option>
-                                  <option value="Floresta">Floresta</option>
-                                  <option value="La Boca">La Boca</option>
-                                  <option value="La Paternal">La Paternal</option>
-                                  <option value="Mataderos">Mataderos</option>
-                                  <option value="Monte Castro">Monte Castro</option>
-                                  <option value="Monserrat">Monserrat</option>
-                                  <option value="Nuñez">Nuñez</option>
-                                  <option value="Palermo">Palermo</option>
-                                  <option value="Parque Avellaneda">Parque Avellaneda</option>
-                                  <option value="Parque Chacabuco">Parque Chacabuco</option>
-                                  <option value="Parque Chas">Parque Chas</option>
-                                  <option value="Parque Patricios">Parque Patricios</option>
-                                  <option value="Puerto Madero">Puerto Madero</option>
-                                  <option value="Recoleta">Recoleta</option>
-                                  <option value="Retiro">Retiro</option>
-                                  <option value="Saavedra">Saavedra</option>
-                                  <option value="San Cristobal">San Cristobal</option>
-                                  <option value="San Nicolas">San Nicolas</option>
-                                  <option value="San Telmo">San Telmo</option>
-                                  <option value="Velez Sarsfield">Velez Sarsfield</option>
-                                  <option value="Versalles">Versalles</option>
-                                  <option value="Villa Crespo">Villa Crespo</option>
-                                  <option value="Villa del Parque">Villa del Parque</option>
-                                  <option value="Villa Devoto">Villa Devoto</option>
-                                  <option value="Villa General Mitre">Villa General Mitre</option>
-                                  <option value="Villa Lugano">Villa Lugano</option>
-                                  <option value="Villa Luro">Villa Luro</option>
-                                  <option value="Villa Ortuzar">Villa Ortuzar</option>
-                                  <option value="Villa Pueyrredon">Villa Pueyrredon</option>
-                                  <option value="Villa Real">Villa Real</option>
-                                  <option value="Villa Riachuelo">Villa Riachuelo</option>
-                                  <option value="Villa Santa Rita">Villa Santa Rita</option>
-                                  <option value="Villa Soldati">Villa Soldati</option>
-                                  <option value="Villa Urquiza">Villa Urquiza</option>
+                                  <option value="">Elegí un país</option>
                                 </select>
 
 
-                                    <span class="invalid-feedback" role="alert">
-                                      @error('country')
-                                        <strong>{{ $message }}</strong>
-                                      @enderror
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    @error('country')
+                                    <strong>{{ $message }}</strong>
+                                    @enderror
+                                </span>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="display: none;">
+                            <label for="country" class="col-md-4 col-form-label text-md-right">Provincia</label>
+
+                            <div class="col-md-6">
+                                <select id="city" name="city" class="form-control">
+                                  <option value="">Elegí una provincia</option>
+                                </select>
+
+
+                                <span class="invalid-feedback" role="alert">
+                                    @error('city')
+                                    <strong>{{ $message }}</strong>
+                                    @enderror
+                                </span>
 
                             </div>
                         </div>
@@ -187,5 +159,6 @@
 </div>
 
 <script type="text/javascript" src="/js/validateUserCreate.js"></script>
+<script src="/js/countryFetch.js"></script>
 
 @endsection

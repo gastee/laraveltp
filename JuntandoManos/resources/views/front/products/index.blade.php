@@ -47,7 +47,7 @@
                                           </div>
                                           <!--end of col-->
                                           <div class="col-auto">
-                                              <button class="btn btn-lg btn-success" type="submit">Buscar</button>
+                                              <button class="btn btn-lg a_btn" type="submit">Buscar</button>
                                           </div>
                                           <!--end of col-->
                                       </div>
@@ -104,7 +104,7 @@
               </div>
               <div class="card-footer" style="text-align: center">
                 <div class="col-auto">
-                    <button class="btn btn-lg btn-success" type="submit" >DONAR</button>
+                    <button class="btn btn-lg a_btn" type="submit" >DONAR</button>
                 </div>
               </div>
             </div>

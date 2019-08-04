@@ -16,11 +16,12 @@ class DatabaseCreation extends Migration
       Schema::create('users', function (Blueprint $table) {
           $table->Increments('id');
           $table->string('name', 100);
-          $table->string('username', 100);
+          $table->string('username', 100)->unique();
           $table->string('email')->unique();
           $table->string('password');
           $table->string('country');
-          // $table->string('province')->nullable();
+          $table->string('city')->nullable();
+          $table->string('district')->nullable();
           $table->string('avatar');
           $table->integer('organization_id')->nullable();
           $table->rememberToken();
@@ -31,7 +32,7 @@ class DatabaseCreation extends Migration
           $table->string('name');
           $table->integer('user_id')->nullable();
           $table->string('email')->unique()->nullable();
-          $table->string('adress')->nullable();
+          $table->string('address')->nullable();
           $table->string('phone')->nullable();
           $table->timestamps();
       });
@@ -39,7 +40,7 @@ class DatabaseCreation extends Migration
           $table->Increments('id');
           $table->integer('organization_id')->nullable();
           $table->string('name');
-          $table->string('direction')->nullable();
+          $table->string('address')->nullable();
           $table->string('contact_name')->nullable();
           $table->string('contact_phone')->nullable();
           $table->string('status')->nullable();

@@ -1,6 +1,6 @@
 @extends('front.template')
 
-@section('pageTitle', 'Profile')
+@section('pageTitle', 'Perfil')
 
 @section('mainContent')
 
@@ -16,7 +16,7 @@
                 <div class="card">
                       <div class="row justify-content-center">
                         <div class="col-6">
-                          <h2>{{('Profile:')}} {{ Auth::user()->name }}</h2>
+                          <h2>{{('Perfil de ')}} {{ Auth::user()->name }}</h2>
 
                           @if ( preg_match("/https/", Auth::user()->avatar) == 1  )
                             <img src="{{ Auth::user()->avatar }}"  style="width: 300px;">
@@ -62,10 +62,18 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">Mail</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right form-control">E-mail</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" autocomplete="email">
+                                    <input id="email"
+                                    type="email"
+                                    class="form-control
+                                    @error('email') is-invalid
+                                    @enderror"
+                                    name="email"
+                                    value="{{ Auth::user()->email }}" autocomplete="email"
+                                    readonly
+                                    >
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -140,8 +148,8 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('update') }}
+                                    <button type="submit" class="btn a_btn">
+                                        {{ __('ACTUALIZAR') }}
                                     </button>
                                 </div>
                             </div>
@@ -153,6 +161,6 @@
     </div>
 
     <script type="text/javascript" src="/js/validateUserCreate.js"></script>
-
+<a href="mailto:?subject=feedback">email me</a>
 @endif
 @endsection

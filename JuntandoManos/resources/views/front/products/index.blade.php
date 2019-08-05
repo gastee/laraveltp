@@ -108,13 +108,13 @@
                     <button type="button" class="btn btn-lg a_btn" onclick="donate()" >DONAR</button>
                       <script>
                         function donate() {
-                          location.assign('catalogue.create')
+                          location.assign('product.create')
                         }
                       </script>
                     <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
                     <script>
                       function edit() {
-                        location.assign('catalogue.edit')
+                        location.assign('product.edit')
                       }
                     </script>
                 </div>

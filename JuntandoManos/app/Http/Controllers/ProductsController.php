@@ -39,9 +39,28 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // Muestra el formulario de crear producto (Cargar donación)
     public function create()
     {
-        return view('products.create');
+      // $request = request();
+      //
+      // $productImage = $request->file('image');
+      //
+      // $productImage = uniqid('img-') . '.' . $productImage->extension();
+      //
+      // $productImage->storePubliclyAs("public/products", $productImageName);
+      //
+      //   return Product::create([
+      //       'name' => $data['name'],
+      //       'category' => $data['category'],
+      //       'image' => $productImageName,
+      //   ]);
+
+        // Trae todas las categorías de la DB
+        $categories = \App\Category::orderBy('name')->get();
+
+        return view('front.products.create', compact('categories'));
     }
 
     /**

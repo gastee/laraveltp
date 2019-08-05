@@ -19,7 +19,7 @@ Route::put('/users/update/{id}', 'UsersController@update')->name('usersUpdate');
 Route::get('/catalogue/index/{category?}', 'ProductsController@index');
 Route::post('/catalogue/index/{category?}', 'ProductsController@search');
 Route::get('/product/{id}', 'ProductsController@');
-Route::get('/product/create', 'ProductsController@create');
+Route::get('/product/create', 'ProductsController@create')->middleware('auth');
 Route::get('/product/update/{id}', 'ProductsController@update');
 
 
@@ -28,7 +28,7 @@ Route::get('/product/update/{id}', 'ProductsController@update');
 
 Route::get('/projects', 'ProjectsController@');
 Route::get('/projects/{id}', 'ProjectsController@');
-Route::get('/projects/create', 'ProjectsController@');
+Route::get('/projects/create', 'ProjectsController@')->middleware('auth');
 Route::get('/projects/update/{id}', 'ProjectsController@');
 
 

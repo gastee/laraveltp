@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use App\Project;
 use App\Organization;
+use Auth;
 
 class ProductsController extends Controller
 {
@@ -41,27 +42,13 @@ class ProductsController extends Controller
      */
 
     // Muestra el formulario de crear producto (Cargar donación)
-    public function create()
+    public function create($Project, $Category, $Name)
     {
+      $categories = Category::all();
+      $allprojects = Project::all();
 
-      // $request = request();
-      //
-      // $productImage = $request->file('image');
-      //
-      // $productImage = uniqid('img-') . '.' . $productImage->extension();
-      //
-      // $productImage->storePubliclyAs("public/products", $productImageName);
-      //
-      //   return Product::create([
-      //       'name' => $data['name'],
-      //       'category' => $data['category'],
-      //       'image' => $productImageName,
-      //   ]);
 
-        // Trae todas las categorías de la DB
-        $categories = \App\Category::orderBy('name')->get();
-
-        return view('front.products.create', compact('categories'));
+        return view('front.products.create', compact('Project', 'Category', 'Name', 'categories', 'allprojects'));
 
     }
 
@@ -71,9 +58,34 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(request $request)
     {
-        //
+
+      // var_dump($request);
+
+      $request = request();
+
+      $productImage = $request->file('image');
+
+      $productImageName = uniqid('img-') . '.' . $productImage->extension();
+
+      $productImage->storePubliclyAs("public/products", $productImageName);
+
+      $categories = Category::orderBy('name')->get();
+
+      $userID = Auth::user()->id;
+
+        return Product::create([
+            'name' => $request['product'],
+            'category_id' => $request['category'],
+            'image' => $productImageName,
+            'user_id' => $userID ,
+            'project_id' => $request['project'] ,
+        ]);
+
+        // return view('front.products.index');
+
+        // Trae todas las categorías de la DB
     }
 
     /**

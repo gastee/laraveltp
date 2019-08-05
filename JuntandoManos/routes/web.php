@@ -1,9 +1,9 @@
 <?php
 //misc//
 
-Route::get('/', 'ProjectsController@index');
-Route::get('/signup', 'ProjectsController@signup');
-Route::get('/login', 'ProjectsController@login');
+Route::get('/', 'HomeController@index');
+Route::get('/signup', 'UsersController@signup');
+Route::get('/login', 'UsersController@login');
 Route::get('/faq', 'HomeController@faq');
 Route::get('/contact', 'HomeController@contact');
 
@@ -18,8 +18,9 @@ Route::put('/users/update/{id}', 'UsersController@update')->name('usersUpdate');
 
 Route::get('/catalogue/index/{category?}', 'ProductsController@index');
 Route::post('/catalogue/index/{category?}', 'ProductsController@search');
-Route::get('/product/create', 'ProductsController@create');
-Route::get('/product/{id}', 'ProductsController@');
+Route::get('/product/create/{project?}/{category?}/{name?}', 'ProductsController@create');
+Route::post('/product/create/{project?}/{category?}/{name?}', 'ProductsController@store');
+Route::get('/product/{id}', 'ProductsController@show');
 Route::get('/product/update/{id}', 'ProductsController@update');
 
 

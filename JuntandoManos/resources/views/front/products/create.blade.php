@@ -3,7 +3,7 @@
 @section('pageTitle', 'Cargar donación')
 
 @section('mainContent')
-  <h2>¡Cargá acá tu producto para donar a {{ $Project->name }}!</h2>
+  <h2>¡Cargá acá tu producto para donar a {{ $Project}}!</h2>
   {{-- Errores si los hubiera --}}
   @if (count($errors))
     <ul>
@@ -13,15 +13,14 @@
     </ul>
   @endif
 
-  <form class="" action="index" method="post" enctype="multipart/form-data">
+  <form class="" action="" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row justify-content-center">
       <div class="col-sm-8">
         <div class="form-group">
           <label for="product">Producto</label>
-          <input type="text"
-          name="product"
-          value="{{ $errors->has('name') ? null : old('name') }}"
+          <input type="text"  name="product" value="{{ $Name }}"
+          {{-- value="{{ $errors->has('name') ? null : old('name') }}" --}}
           class="form-control"
           data-nombre='Nombre del producto'
         >
@@ -35,9 +34,20 @@
         @enderror
 
         <div class="form-group">
+          <label for="category">Proyecto</label>
+            <select class="form-control" name="project" data-nombre='project'>
+              <option value="{{$Project}}">Elegí una opción</option>
+              @foreach ($allprojects as $Project)
+                <option value="{{ $Project->id }}">{{ $Project->name }}</option>
+              @endforeach
+            </select>
+
+
+        </div>
+        <div class="form-group">
           <label for="category">Categoría</label>
             <select class="form-control" name="category" data-nombre='Categoría'>
-              <option value="">Elegí una opción</option>
+              <option value="{{$Category}}">Elegí una opción</option>
               @foreach ($categories as $Category)
                 <option value="{{ $Category->id }}">{{ $Category->name }}</option>
               @endforeach

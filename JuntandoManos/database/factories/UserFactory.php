@@ -56,30 +56,7 @@ $factory->define(User::class, function (Faker $faker) {
             ];
         });
 
-        "Misiones",
-        "San Luis",
-        "San Juan",
-        "Entre Ríos",
-        "Santa Cruz",
-        "Río Negro",
-        "Chubut",
-        "Córdoba",
-        "Mendoza",
-        "La Rioja",
-        "Catamarca",
-        "La Pampa",
-        "Santiago del Estero",
-        "Corrientes",
-        "Santa Fe",
-        "Tucumán",
-        "Neuquén",
-        "Salta",
-        "Chaco",
-        "Formosa",
-        "Jujuy",
-        "Ciudad Autónoma de Buenos Aires",
-        "Buenos Aires",
-        "Tierra del Fuego, Antártida e Islas del Atlántico Sur"
+  
 // $user = factory(App\User::class)->make();
 // $user->save();
 //

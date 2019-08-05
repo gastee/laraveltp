@@ -108,13 +108,13 @@
                     <button type="button" class="btn btn-lg a_btn" onclick="donate()" >DONAR</button>
                       <script>
                         function donate() {
-                          location.assign('product.create')
+                          location.assign('/product/create/{{$oneProduct->project->id}/{{$oneProduct->project->name}}/{{$oneProduct->name}}')
                         }
                       </script>
                     <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
                     <script>
                       function edit() {
-                        location.assign('product.edit')
+                        location.assign('/product/update/{id}')
                       }
                     </script>
                 </div>

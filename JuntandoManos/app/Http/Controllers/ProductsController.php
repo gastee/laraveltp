@@ -60,33 +60,55 @@ class ProductsController extends Controller
      */
     public function store(request $request)
     {
+    //   dd($request->all());
+    //   // var_dump($request);
+    // }
 
-      // var_dump($request);
+    //   $request->validate([
+    //
+  	// 		'description' => 'required',
+    //     'image' => 'required | image'
+    //   ],
+    //
+    //   $product = new Product; // Objeto de tipo Product vacio
+    //
+  	// 	// Asocio atributos con valores
+  	// 	$product->name = $request->input('name');
+    //   // $product->category = $request->input('category');
+    //   // $product->project = $request->input('project');
+    //   // $product->user_id = $request->input('user_id');
+    //   // $product->description = $request->input('description');
+    //
+    //   $productImage = $request->file('image');
+    //
+    //   if ($image) {
+    //   $productImageName = uniqid('img-') . '.' . $productImage->extension();
+    //
+    //   $productImage->storePubliclyAs("public/products", $productImageName);
+    //   $product->image = $productImageName;
+    //   }
+    //
+    //   $product->save();
+    //
+    //   return redirect('/front.products.index');
+    // }
 
-      $request = request();
+      // $categories = Category::orderBy('name')->get();
+      //
+      //
+      // $userID = Auth::user()->id;
 
-      $productImage = $request->file('image');
-
-      $productImageName = uniqid('img-') . '.' . $productImage->extension();
-
-      $productImage->storePubliclyAs("public/products", $productImageName);
-
-      $categories = Category::orderBy('name')->get();
-
-      $userID = Auth::user()->id;
-
-        return Product::create([
-            'name' => $request['product'],
+        $product = Product::create([
+            'name' => $request['name'],
             'category_id' => $request['category'],
             'image' => $productImageName,
             'user_id' => $userID ,
             'project_id' => $request['project'] ,
-        ]);
+            'description' => $request['description'],
+            ]);
 
-        // return view('front.products.index');
-
-        // Trae todas las categorías de la DB
-    }
+        return view('/front.products.index');
+        }
 
     /**
      * Display the specified resource.
@@ -109,7 +131,14 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+      // Busco el producto
+      $productToEdit = Product::find($id);
+
+      // Busco las categorías y proyectos
+      $categories = \App\Category::orderBy('name')->get();
+      $projects = \App\Project::orderBy('name')->get();
+      return view('front.products.edit', compact('productToEdit', 'categories', 'projects'));
+
     }
 
     /**
@@ -121,7 +150,32 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      // $request->validate([
+      //
+      //     'image' => 'required | image'
+      //   ],
+      //
+      //   $product = new Product; // Objeto de tipo Product vacio
+      //
+    	// 	// Asocio atributos con valores
+    	// 	$product->name = $request->input('name');
+      //   $product->category = $request->input('category');
+      //   $product->project = $request->input('project');
+      //   $product->user_id = $request->input('user_id');
+      //   $product->description = $request->input('description');
+      //
+      //   $productImage = $request->file('image');
+      //
+      //   if ($image) {
+      //   $productImageName = uniqid('img-') . '.' . $productImage->extension();
+      //
+      //   $productImage->storePubliclyAs("public/products", $productImageName);
+      //   $product->image = $productImageName;
+      //   }
+      //
+      //   $product->save();
+      //
+      //   return redirect('/front.products.index');
     }
 
     /**
@@ -132,7 +186,14 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      // Busco el producto
+      $productToDelete = Product::find($id);
+
+      // Lo borro
+      $productToDelete->delete();
+
+      // Redirecciono a una RUTA
+      return redirect('front.products.create');
     }
 
     public function projectProducts($project_id)

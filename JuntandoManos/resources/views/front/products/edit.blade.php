@@ -1,6 +1,6 @@
 @extends('front.template')
 
-@section('pageTitle', 'Cargar donación')
+@section('pageTitle', 'Editar producto')
 
 @section('mainContent')
 
@@ -13,11 +13,11 @@
     </ul>
   @endif
 
-  <form class="" action="index" method="POST" enctype="multipart/form-data">
+  <form class="" action="/products/{{ $productToEdit->id }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row justify-content-center">
       <div class="col-sm-8">
-        <h1>¡Cargá acá tu producto para donar a {{ $Project }}!</h1>
+        <h1>Editá o eliminá el producto que donaste a {{ $project }}</h1>
         <div class="form-group">
           <label for="product">Producto</label>
           <input readonly style="background-color: lightgray;" type="text"  name="product" value="{{ $Name }}"
@@ -63,7 +63,9 @@
     			  </div>
 
             <div class="form-group">
-              <button type="submit" class="btn a_btn">Donar producto</button>
+              <button type="submit" class="btn a_btn">Actualizar</button>
+              {{ method_field('delete') }}
+              <button type="submit" class="btn btn-danger">Borrar</button>
             </div>
 
         </div>

@@ -56,6 +56,7 @@ class DatabaseCreation extends Migration
           $table->integer('category_id')->nullable();
           $table->string('status')->nullable();
           $table->string('image')->nullable();
+          $table->string('description')->nullable();
           $table->timestamps();
       });
       Schema::create('categories', function (Blueprint $table) {

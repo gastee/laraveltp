@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-  protected $fillable = ['name', 'category_id', 'status', 'image', 'user_id', 'project_id' ];
+  protected $fillable = ['name', 'category_id', 'status', 'image', 'user_id', 'project_id', 'description' ];
 
 // Comento la relacion muchos a muchos que tira error
     	// public function categories()

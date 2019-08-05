@@ -129,6 +129,11 @@ a_btn:hover {
   text-decoration:none;
   text-align:center;
 }
+
+.text-area {
+width: 100% !important;
+}
+
 .textoform {
   min-width:130px;
 }

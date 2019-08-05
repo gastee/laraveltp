@@ -20,9 +20,3 @@ $factory->define(Category::class, function (Faker $faker) {
       ])
     ];
 });
-//
-// $category = factory(App\Category::class)->make();
-// $category->save();
-//
-// factory(App\Category::class)->create();
-// factory(App\Category::class)->times(5)->create();

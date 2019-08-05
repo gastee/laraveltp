@@ -7,8 +7,8 @@
   right: 32%;
   /* vertical-align: middle; */
   align: center;
-   top: 2%;
-  bottom: 15%;
+   top: 0.05%;
+  bottom: 25%;
   background-color: transparent;
   z-index: 2000;
   cursor: pointer;

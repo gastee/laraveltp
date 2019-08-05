@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'password' => ['required', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
             //'password_confirmation' => ['required', 'min:8', '', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
             'country' => ['required', 'string', 'max:25'],
+            'province' => ['string', 'max:25'],
             'avatar' => ['required', 'image'],
         ], [
 					'required' => 'El campo :attribute es obligatorio',
@@ -87,6 +88,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'country' => $data['country'],
+            'province' => $data['province'],
             'avatar' => $profileImageName,
             'password' => Hash::make($data['password']),
         ]);

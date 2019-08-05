@@ -20,7 +20,7 @@
         @endforeach
         </ul>
         </div>
-        <h1 class="my-4">Proyectos</h1>
+        {{-- <h1 class="my-4">Proyectos</h1>
         <div class="list-group">
           <ul>
             @foreach ($allprojects as $Project)
@@ -29,7 +29,7 @@
 
         @endforeach
         </ul>
-        </div>
+        </div> --}}
 
       </div>
       <!-- /.col-lg-3 -->
@@ -104,7 +104,9 @@
               </div>
               <div class="card-footer" style="text-align: center">
                 <div class="col-auto">
+                  <form class="" action="/product/create" method="get">
                     <button class="btn btn-lg a_btn" type="submit" >DONAR</button>
+                  </form>
                 </div>
               </div>
             </div>

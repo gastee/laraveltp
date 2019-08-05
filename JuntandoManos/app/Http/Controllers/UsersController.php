@@ -75,6 +75,8 @@ class UsersController extends Controller
     {
       $user = \App\User::find($id);
       $user->name = $request->input('name');
+      $user->country = $request->input('country');
+      $user->province = $request->input('province');
 
       //hacer todos los campos y copiar los campos de register controllers para update
       $user->save();

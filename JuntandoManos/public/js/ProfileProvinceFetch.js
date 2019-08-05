@@ -39,15 +39,23 @@ window.addEventListener('load', function () {
 		});
 	}
 
-	selectPaises.addEventListener('change', function () {
-		if (this.value.toLowerCase() === 'argentina') {
+	// selectProvincias.addEventListener('click', function () {
+	// 	if (selectPaises.value.toLowerCase() === 'argentina') {
+	// 		// contenedorProvincias.style.display = 'flex';
+  //     // selectProvincias.innerHTML = '<option value="">Elegí tu Provincia</option>';
+	// 		genericFetchCall('https://apis.datos.gob.ar/georef/api/provincias', insertProvinces);
+	// 	}});
+
+  selectPaises.addEventListener('change', function () {
+    if (selectPaises.value.toLowerCase() === 'argentina') {
 			contenedorProvincias.style.display = 'flex';
 			genericFetchCall('https://apis.datos.gob.ar/georef/api/provincias', insertProvinces);
-		} else {
-			contenedorProvincias.style.display = 'none';
-			selectProvincias.innerHTML = '<option value="">Elegí una provincia</option>';
 		}
-	});
+    else if (selectPaises.value.toLowerCase() != 'argentina') {
+
+    	contenedorProvincias.style.display = 'none';
+			selectProvincias.innerHTML = '<option value="">Elegí tu Provincia</option>';
+		}});
 
 }
 )

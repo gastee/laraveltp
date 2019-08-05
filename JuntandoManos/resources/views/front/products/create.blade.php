@@ -1,6 +1,7 @@
 @extends('front.template')
 @section('mainContent')
-  <form class="" action="{{ route('products') }}" method="post" enctype="multipart/form-data">
+  <form class="" action="" method="post" enctype="multipart/form-data">
+  {{-- <form class="" action="{{ route('products') }}" method="post" enctype="multipart/form-data"> --}}
     @csrf
 
     <div class="row justify-content-center">

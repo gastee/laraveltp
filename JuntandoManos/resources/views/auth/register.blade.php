@@ -104,16 +104,16 @@
                         </div>
 
                         <div class="form-group row" style="display: none;">
-                            <label for="country" class="col-md-4 col-form-label text-md-right">Provincia</label>
+                            <label for="province" class="col-md-4 col-form-label text-md-right">Provincia</label>
 
                             <div class="col-md-6">
-                                <select id="city" name="city" class="form-control">
+                                <select id="province" name="province" class="form-control">
                                   <option value="">Elegí una provincia</option>
                                 </select>
 
 
                                 <span class="invalid-feedback" role="alert">
-                                    @error('city')
+                                    @error('province')
                                     <strong>{{ $message }}</strong>
                                     @enderror
                                 </span>

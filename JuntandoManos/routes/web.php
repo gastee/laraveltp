@@ -19,15 +19,15 @@ Route::put('/users/update/{id}', 'UsersController@update')->name('usersUpdate');
 Route::get('/catalogue/index/{category?}', 'ProductsController@index');
 Route::post('/catalogue/index/{category?}', 'ProductsController@search');
 Route::get('/product/{id}', 'ProductsController@');
-Route::get('/product/create', 'ProjectsController@create');
-Route::get('/product/update/{id}', 'ProjectsController@update');
+Route::get('/product/create', 'ProductsController@create');
+Route::get('/product/update/{id}', 'ProductsController@update');
 
 
 
 //proyectos//
 
-Route::get('/projects', 'ProductsController@');
-Route::get('/projects/{id}', 'ProductsController@');
+Route::get('/projects', 'ProjectsController@');
+Route::get('/projects/{id}', 'ProjectsController@');
 Route::get('/projects/create', 'ProjectsController@');
 Route::get('/projects/update/{id}', 'ProjectsController@');
 

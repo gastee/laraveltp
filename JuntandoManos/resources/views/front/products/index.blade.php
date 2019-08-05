@@ -103,8 +103,20 @@
                 <p class="card-text">Proyecto: {{$oneProduct->project->name}}</p>
               </div>
               <div class="card-footer" style="text-align: center">
-                <div class="col-auto">
-                    <button class="btn btn-lg a_btn" type="submit" >DONAR</button>
+                <div class="mr-auto">
+                    {{-- <button id="donate_button" class="btn btn-lg a_btn" type="button" >DONAR</button> --}}
+                    <button type="button" class="btn btn-lg a_btn" onclick="donate()" >DONAR</button>
+                      <script>
+                        function donate() {
+                          location.assign('catalogue.create')
+                        }
+                      </script>
+                    <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
+                    <script>
+                      function edit() {
+                        location.assign('catalogue.edit')
+                      }
+                    </script>
                 </div>
               </div>
             </div>

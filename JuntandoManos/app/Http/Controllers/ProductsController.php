@@ -73,7 +73,14 @@ class ProductsController extends Controller
       ]);
         $project = Project::find($request['project']);
         // dd( $project);
-        $projects = [];
+        $myorganization = Organization::where('user_id', Auth::user()->id)->get();
+        if (count($myorganization)>0){
+          $myOrgID = $myorganization[0]['id'];
+          $projects = Project::where('organization_id', $myOrgID)->paginate(6);
+        }
+        else {
+          $projects = [];
+        };
         $products = Product::where('user_id', Auth::user()->id )->paginate(6);
         $categories = Category::all();
         $productImage = $request->file('image');

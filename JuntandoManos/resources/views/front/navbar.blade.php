@@ -18,6 +18,12 @@
                       <!-- links navbar -->
 
      <ul class="navbar-nav">
+       <li class="nav-item">
+         <a href="/projects" class="nav-link">Proyectos</a>
+       </li>
+       <li class="nav-item">
+         <a href="/catalogue/index/" class="nav-link">Necesidades</a>
+       </li>
         @if  (!Auth::check())
          <li class="nav-item">
            <a href="/login" class="nav-link">Ingresar</a>
@@ -48,7 +54,6 @@
 
          </div>
 
-         </li>
 
         @endif
 
@@ -63,10 +68,10 @@
           <a href="/contact" class="dropdown-item">Contacto</a>
           <div class="dropdown-divider"></div>
           <a href="/faq" class="dropdown-item">FAQ</a>
-          <div class="dropdown-divider"></div>
-          <a href="/catalogue/index/" class="dropdown-item">Catálogo</a>
         </div>
        </li>
+
+
 
     </div>
  </nav>

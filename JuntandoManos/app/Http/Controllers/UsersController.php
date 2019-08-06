@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
+use App\Project;
+use App\Organization;
 use Auth;
 
 class UsersController extends Controller
@@ -31,8 +34,16 @@ class UsersController extends Controller
     public function profile()
     {
       $products = Product::where('user_id', Auth::user()->id )->paginate(6);
+      $myorganization = Organization::where('user_id', Auth::user()->id)->get();
+      if (count($myorganization)>0){
+        $myOrgID = $myorganization[0]['id'];
+        $projects = Project::where('organization_id', $myOrgID)->paginate(6);
+      }
+      else {
+        $projects = [];
+      }
 
-        return view('front.user.profile', compact('products'));
+        return view('front.user.profile', compact('products','projects'));
     }
 
     /**

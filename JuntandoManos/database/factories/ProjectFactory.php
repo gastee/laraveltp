@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Project::class, function (Faker $faker) {
 
       return [
+        'image' => $faker->imageUrl(200, 200, 'abstract'),
         'name' => $faker->randomElement([
   				'Comedor Las Pepas',
   			  'Escuela EP Nro 6 - La Matanza',

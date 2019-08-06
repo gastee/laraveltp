@@ -3,15 +3,16 @@
 @section('pageTitle', 'Cargar donación')
 
 @section('mainContent')
-
+  <body >
+  <div class="container">
   {{-- Errores si los hubiera --}}
-  @if (count($errors))
+  {{-- @if (count($errors))
     <ul>
       @foreach ($errors->all() as $error)
         <li class="text-danger"> {{ $error }} </li>
       @endforeach
     </ul>
-  @endif
+  @endif --}}
 
   <form class="" action="" method="POST" enctype="multipart/form-data">
     @csrf
@@ -53,7 +54,7 @@
 
 
             <div class="form-group">
-              <label>Danos una breve descripción de tu producto y su estado</label>
+              <label>Danos una breve descripción del producto y su estado</label>
                <div class="col-sm-8">
                 <textarea class= "text-area" name="description" rows="3" cols="100"></textarea>
               </div>
@@ -80,7 +81,7 @@
       </div>
     </div>
 </form>
-
+</div>
 <script src="/js/validateForms.js"></script>
 
 @endsection

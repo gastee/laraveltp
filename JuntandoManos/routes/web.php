@@ -28,7 +28,9 @@ Route::get('/product/{id}/edit', 'ProductsController@edit'); // Formulario para 
 
 //proyectos//
 
-Route::get('/projects/{id}', 'ProjectsController@index');
+Route::get('/projects', 'ProjectsController@index');
+Route::post('/projects', 'ProjectsController@search');
+Route::get('/projects/{id}', 'ProjectsController@show');
 Route::get('/projects/create', 'ProjectsController@');
 Route::get('/projects/update/{id}', 'ProjectsController@');
 

@@ -20,6 +20,7 @@
         @endforeach
         </ul>
         </div>
+      </div>
         {{-- <h1 class="my-4">Proyectos</h1>
         <div class="list-group">
           <ul>
@@ -31,7 +32,6 @@
         </ul>
         </div> --}}
 
-      </div>
       <!-- /.col-lg-3 -->
 
       <div class="col-lg-9">
@@ -118,9 +118,9 @@
                           location.assign('/product/create/{{$oneProduct->id}}')
                         }
                       </script> --}}
-                      <a href='/product/{{$oneProduct->id}}/edit'>
+                      {{-- <a href='/product/{{$oneProduct->id}}/edit'>
                     <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
-                    </a>
+                    </a> --}}
                     {{-- <script>
                       function edit() {
                         location.assign('/product/{id}/edit')

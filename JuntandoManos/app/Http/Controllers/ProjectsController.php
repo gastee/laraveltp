@@ -21,18 +21,30 @@ class ProjectsController extends Controller{
 
 
 
+
         return view('front.projects.index', compact('projects', 'categories', 'organizations'));
         // return view('front.products.index');
       }
     public function show($id){
 
-      $products = Product::where('project_id',$id)->where('user_id', '=', Auth::user()->id)->paginate(6);
+      $userOrg = Auth::user()->organization_id;
+      // dd( $userOrg);
 
+      if ($userOrg != null) {
+        // code...
+        $offeredproducts = Product::where('project_id',$id)->where('user_id', '!=', Auth::user()->id)->paginate(6);
+        $products = Product::where('project_id',$id)->where('user_id', '=', Auth::user()->id)->paginate(6);
+        // dd( $offeredproducts);
+      }
+      else {
+
+      $offeredproducts = [];
+      $products = Product::where('project_id',$id)->where('user_id', '!=', Auth::user()->id)->paginate(6);
+      // dd( $products);
+
+      }
       $project = Project::find($id);
-
       $categories = Category::all();
-
-      $offeredproducts = Product::where('project_id',$id)->where('user_id', '!=', Auth::user()->id)->paginate(6);
 
         return view('front.projects.show', compact('products', 'categories', 'project', 'offeredproducts'));
 
@@ -43,13 +55,11 @@ class ProjectsController extends Controller{
       {
         $search = $request -> input('search');
 
-        // $products = Product::where('name','LIKE',"%$search%")->where('project_id','!=', null)->paginate(6);
         $projects = Project::where('name','LIKE',"%$search%")->paginate(6);
 
         $categories = Category::all();
         $allprojects = Project::all();
 
-        // return view('front.products.index', compact('products', 'categories', 'allprojects'));
         return view('front.projects.index', compact('categories', 'projects', 'allprojects'));
 
       }

@@ -146,52 +146,6 @@
                     </div>
 
 
-                    @if (count($products)>=1)
-                            <ul>
-                              <h1 class="my-4">Mis Donaciones</h1>
-                            <div class="row">
-                              @foreach ($products as $oneProduct)
-                                <div class="col-lg-4 col-md-6 mb-4" name='eachproduct' >
-                                <li>
-                                <div class="card h-100"  id='producto' >
-                                  @if ( preg_match("/https/", $oneProduct->image ) == 1  )
-                                    <a href="#"><img src="{{$oneProduct->image }}" src={{$oneProduct->image}} alt=""></a>
-                                  @else
-                                    <a href="#"><img src="/storage/products/{{ $oneProduct->image}}" alt=""></a>
-                                  @endif
-                                  <div class="card-body"  id="datosProducto">
-                                    <h4 class="card-title">
-                                      <p href="#">{{$oneProduct->name}}</p>
-                                    </h4>
-                                    <p class="card-text">Categoría: {{$oneProduct->category->name}}</p>
-                                    <p class="card-text">Proyecto: {{$oneProduct->project->name}}</p>
-                                  </div>
-                                  <div class="card-footer" style="text-align: center">
-                                    <div class="mr-auto">
-                                    
-                                          {{-- <script>
-                                            function donate() {
-                                              location.assign('/product/create/{{$oneProduct->id}}')
-                                            }
-                                          </script> --}}
-                                          <a href='/product/{{$oneProduct->id}}/edit'>
-                                        <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
-                                        </a>
-                                        {{-- <script>
-                                          function edit() {
-                                            location.assign('/product/{id}/edit')
-                                          }
-                                        </script> --}}
-                                    </div>
-                                  </div>
-                                </div>
-                              </li>
-                            </div>
-                            @endforeach
-                        </div>
-                        {{ $products->links() }}
-                      </ul>
-                        @endif
 
                         @if (count($projects)>0)
                                 <ul>
@@ -234,6 +188,52 @@
                           </ul>
                             @endif
 
+                            @if (count($products)>0)
+                              <ul>
+                                <h1 class="my-4">Mis Donaciones</h1>
+                                <div class="row">
+                                  @foreach ($products as $oneProduct)
+                                    <div class="col-lg-4 col-md-6 mb-4" name='eachproduct' >
+                                      <li>
+                                        <div class="card h-100"  id='producto' >
+                                          @if ( preg_match("/https/", $oneProduct->image ) == 1  )
+                                            <a href="#"><img src="{{$oneProduct->image }}" src={{$oneProduct->image}} alt=""></a>
+                                          @else
+                                            <a href="#"><img src="/storage/products/{{ $oneProduct->image}}" alt=""></a>
+                                          @endif
+                                          <div class="card-body"  id="datosProducto">
+                                            <h4 class="card-title">
+                                              <p href="#">{{$oneProduct->name}}</p>
+                                            </h4>
+                                            <p class="card-text">Categoría: {{$oneProduct->category->name}}</p>
+                                            <p class="card-text">Proyecto: {{$oneProduct->project->name}}</p>
+                                          </div>
+                                          <div class="card-footer" style="text-align: center">
+                                            <div class="mr-auto">
+
+                                              {{-- <script>
+                                              function donate() {
+                                              location.assign('/product/create/{{$oneProduct->id}}')
+                                            }
+                                          </script> --}}
+                                          <a href='/product/{{$oneProduct->id}}/edit'>
+                                            <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
+                                          </a>
+                                          {{-- <script>
+                                          function edit() {
+                                          location.assign('/product/{id}/edit')
+                                        }
+                                      </script> --}}
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                            </div>
+                          @endforeach
+                        </div>
+                        {{ $products->links() }}
+                      </ul>
+                    @endif
 
 
 

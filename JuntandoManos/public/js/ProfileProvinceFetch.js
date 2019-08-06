@@ -54,7 +54,7 @@ window.addEventListener('load', function () {
     else if (selectPaises.value.toLowerCase() != 'argentina') {
 
     	contenedorProvincias.style.display = 'none';
-			selectProvincias.innerHTML = '<option value="">Elegí tu Provincia</option>';
+			selectProvincias.innerHTML = '<option value=null>Elegí tu Provincia</option>';
 		}});
 
 }

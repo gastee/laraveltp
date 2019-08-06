@@ -13,7 +13,7 @@
     </ul>
   @endif
 
-  <form class="" action="index" method="POST" enctype="multipart/form-data">
+  <form class="" action="" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row justify-content-center">
       <div class="col-sm-8">
@@ -38,9 +38,19 @@
         </div>
         <div class="form-group">
           <label for="category">Categoría</label>
-            <input readonly style="background-color: lightgray;" type="text"  name="category" value="{{ $Name }}"
-            class="form-control"
-            >
+
+          <select readonly style="background-color: lightgray;" type="text" id="category" name="category" class="form-control">
+            <option value="{{ $productoOrigen->category_id }}" selected>{{ $productoOrigen->category->name }}</option>
+          </select>
+
+        <div class="form-group">
+          <label for="project">Proyecto</label>
+
+          <select readonly style="background-color: lightgray;" type="text" id="project" name="project" class="form-control">
+            <option value="{{ $productoOrigen->project_id }}" selected>{{ $productoOrigen->project->name }}</option>
+          </select>
+
+
 
             <div class="form-group">
               <label>Danos una breve descripción de tu producto y su estado</label>

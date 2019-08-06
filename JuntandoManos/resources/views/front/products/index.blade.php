@@ -94,7 +94,11 @@
             <div class="col-lg-4 col-md-6 mb-4" name='eachproduct' >
             <li>
             <div class="card h-100"  id='producto' >
-              <a href="#"><img class="card-img-top" src={{$oneProduct->image}} alt=""></a>
+              @if ( preg_match("/https/", $oneProduct->image ) == 1  )
+                <a href="#"><img src="{{$oneProduct->image }}" src={{$oneProduct->image}} alt=""></a>
+              @else
+                <a href="#"><img src="/storage/products/{{ $oneProduct->image}}" alt=""></a>
+              @endif
               <div class="card-body"  id="datosProducto">
                 <h4 class="card-title">
                   <p href="#">{{$oneProduct->name}}</p>
@@ -105,18 +109,23 @@
               <div class="card-footer" style="text-align: center">
                 <div class="mr-auto">
                     {{-- <button id="donate_button" class="btn btn-lg a_btn" type="button" >DONAR</button> --}}
+                  <a href='/product/create/{{$oneProduct->id}}'>
                     <button type="button" class="btn btn-lg a_btn" onclick="donate()" >DONAR</button>
-                      <script>
+                  </a>
+
+                      {{-- <script>
                         function donate() {
-                          location.assign('/product/create/{{$oneProduct->project->id}}/{{$oneProduct->project->name}}/{{$oneProduct->name}}')
+                          location.assign('/product/create/{{$oneProduct->id}}')
                         }
-                      </script>
+                      </script> --}}
+                      <a href='/product/{{$oneProduct->id}}/edit'>
                     <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
-                    <script>
+                    </a>
+                    {{-- <script>
                       function edit() {
                         location.assign('/product/{id}/edit')
                       }
-                    </script>
+                    </script> --}}
                 </div>
               </div>
             </div>

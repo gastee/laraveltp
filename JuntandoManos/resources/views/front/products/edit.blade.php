@@ -1,9 +1,11 @@
 @extends('front.template')
 
-@section('pageTitle', 'Editar producto')
+@section('pageTitle', 'Cargar donación')
 
 @section('mainContent')
 
+  <body >
+  <div class="container">
   {{-- Errores si los hubiera --}}
   @if (count($errors))
     <ul>
@@ -13,11 +15,12 @@
     </ul>
   @endif
 
-  <form class="" action="/products/{{ $productToEdit->id }}" method="POST" enctype="multipart/form-data">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+  <form class="" action="" method="POST" enctype="multipart/form-data">
+    {{method_field('put')}}
     @csrf
-    <div class="row justify-content-center">
-      <div class="col-sm-8">
-        <h1>Editá o eliminá el producto que donaste a {{ $project }}</h1>
+        <h1>¡Cargá acá tu producto para donar a {{ $Project }}!</h1>
         <div class="form-group">
           <label for="product">Producto</label>
           <input readonly style="background-color: lightgray;" type="text"  name="product" value="{{ $Name }}"
@@ -38,9 +41,24 @@
         </div>
         <div class="form-group">
           <label for="category">Categoría</label>
-            <input readonly style="background-color: lightgray;" type="text"  name="category" value="{{ $Name }}"
-            class="form-control"
-            >
+
+          <select type="text" id="category" name="category" class="form-control">
+            <option value="{{ $product->category_id }}" selected>{{ $product->category->name }}</option>
+            @foreach ($categories as $cat)
+              <option value="{{ $cat->category_id }}">{{ $cat->name }}</option>
+            @endforeach
+          </select>
+
+        <div class="form-group">
+          <label for="project">Proyecto</label>
+
+            <select type="text" id="project" name="project" class="form-control">
+            <option value="{{ $product->project_id }}" selected>{{ $product->project->name }}</option>
+            @foreach ($projects as $Proj)
+              <option value="{{ $Proj->project_id }}">{{ $Proj->name }}</option>
+            @endforeach
+          </select>
+
 
             <div class="form-group">
               <label>Danos una breve descripción de tu producto y su estado</label>
@@ -63,16 +81,20 @@
     			  </div>
 
             <div class="form-group">
-              <button type="submit" class="btn a_btn">Actualizar</button>
-              {{ method_field('delete') }}
-              <button type="submit" class="btn btn-danger">Borrar</button>
+              <button type="submit" class="btn a_btn">Donar producto</button>
             </div>
 
         </div>
       </div>
-    </div>
 </form>
+</div>
+</div>
+</div>
 
 <script src="/js/validateForms.js"></script>
+
+</body>
+
+</html>
 
 @endsection

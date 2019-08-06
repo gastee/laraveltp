@@ -26,6 +26,14 @@ class ProjectsController extends Controller{
         return view('front.projects.index', compact('products', 'project', 'categories'));
         // return view('front.products.index');
       }
+    public function show($id){
+
+      $products = Product::where('project_id',$id)->paginate(6);
+
+        return view('front.projects.index', compact('products'));
+
+        // return view('front.products.index');
+      }
 
 
 

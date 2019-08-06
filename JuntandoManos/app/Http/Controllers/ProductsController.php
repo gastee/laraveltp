@@ -21,10 +21,10 @@ class ProductsController extends Controller
     {
       if ($category) {
 
-      $products = Product::where('category_id', $category)->paginate(6);
+      $products = Product::where('category_id', $category)->where('project_id','!=', null)->paginate(6);
       }
       else {
-        $products = Product::paginate(6);
+        $products = Product::where('project_id','!=', null)->paginate(6);
       }
 
       $categories = Category::all();
@@ -42,13 +42,19 @@ class ProductsController extends Controller
      */
 
     // Muestra el formulario de crear producto (Cargar donación)
-    public function create($Project, $Category, $Name)
+    public function create($id)
     {
+
+      $productoOrigen = Product::find($id);
+
+      // dd( $productoOrigen);
+      $Category = $productoOrigen->category->name;
+      $Name = $productoOrigen->name;
+      $Project = $productoOrigen->Project->name;
       $categories = Category::all();
-      $allprojects = Project::all();
 
 
-        return view('front.products.create', compact('Project', 'Category', 'Name', 'categories', 'allprojects'));
+        return view('front.products.create', compact('Project', 'Category', 'Name', 'categories','productoOrigen'));
 
     }
 
@@ -60,16 +66,32 @@ class ProductsController extends Controller
      */
     public function store(request $request)
     {
-    //   dd($request->all());
-    //   // var_dump($request);
-    // }
+      $request->validate([
 
-    //   $request->validate([
-    //
-  	// 		'description' => 'required',
-    //     'image' => 'required | image'
-    //   ],
-    //
+        'description' => 'required',
+        'image' => 'required | image'
+      ]);
+        $project = Project::find($request['project']);
+        // dd( $project);
+        $projects = [];
+        $products = Product::where('user_id', Auth::user()->id )->paginate(6);
+        $categories = Category::all();
+        $productImage = $request->file('image');
+        $productImageName = uniqid('img-') . '.' . $productImage->extension();
+        $productImage->storePubliclyAs("public/products", $productImageName);
+        $userID = Auth::user()->id;
+         Product::create([
+              'name' => $request['product'],
+              'category_id' => $request['category'],
+              'image' => $productImageName,
+              'description' => $request['description'],
+              'user_id' => $userID ,
+              'project_id' => $request['project'] ,
+          ]);
+          return view('front.user.profile', compact('categories', 'project', 'products', 'projects'));
+      }
+
+
     //   $product = new Product; // Objeto de tipo Product vacio
     //
   	// 	// Asocio atributos con valores
@@ -98,17 +120,18 @@ class ProductsController extends Controller
       //
       // $userID = Auth::user()->id;
 
-        $product = Product::create([
-            'name' => $request['name'],
-            'category_id' => $request['category'],
-            'image' => $productImageName,
-            'user_id' => $userID ,
-            'project_id' => $request['project'] ,
-            'description' => $request['description'],
-            ]);
+        // $product = Product::create([
+        //     'name' => $request['name'],
+        //     'category_id' => $request['category'],
+        //     'image' => $productImageName,
+        //     'user_id' => $userID ,
+        //     'project_id' => $request['project'] ,
+        //     'description' => $request['description'],
+        //     ]);
+        //     $product
 
-        return view('/front.products.index');
-        }
+
+
 
     /**
      * Display the specified resource.
@@ -132,12 +155,18 @@ class ProductsController extends Controller
     public function edit($id)
     {
       // Busco el producto
-      $productToEdit = Product::find($id);
+      $product = Product::find($id);
+      $Project = $product->Project->name;
+      $Name = $product->name;
+      $Category = $product->category->name;
+
 
       // Busco las categorías y proyectos
-      $categories = \App\Category::orderBy('name')->get();
-      $projects = \App\Project::orderBy('name')->get();
-      return view('front.products.edit', compact('productToEdit', 'categories', 'projects'));
+      $categories = Category::all();
+      $projects = Project::all();
+      return view('front.products.edit', compact('product', 'categories', 'projects', 'Project', 'Name', 'Category'));
+
+
 
     }
 
@@ -150,32 +179,32 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-      // $request->validate([
-      //
-      //     'image' => 'required | image'
-      //   ],
-      //
-      //   $product = new Product; // Objeto de tipo Product vacio
-      //
-    	// 	// Asocio atributos con valores
-    	// 	$product->name = $request->input('name');
-      //   $product->category = $request->input('category');
-      //   $product->project = $request->input('project');
-      //   $product->user_id = $request->input('user_id');
-      //   $product->description = $request->input('description');
-      //
-      //   $productImage = $request->file('image');
-      //
-      //   if ($image) {
-      //   $productImageName = uniqid('img-') . '.' . $productImage->extension();
-      //
-      //   $productImage->storePubliclyAs("public/products", $productImageName);
-      //   $product->image = $productImageName;
-      //   }
-      //
-      //   $product->save();
-      //
-      //   return redirect('/front.products.index');
+      $request->validate([
+
+          'image' => 'image'
+        ]);
+
+        $product = Product::find($id);
+        $products = Product::where('user_id', Auth::user()->id )->paginate(6);
+
+          		// Asocio atributos con valores
+    		$product->name = $request['product'];
+        $product->category_id = $request['category'];
+        $product->project_id = $request['project'];
+        $product->description = $request['description'];
+
+        $productImage = $request->file('image');
+
+        if ($productImage) {
+        $productImageName = uniqid('img-') . '.' . $productImage->extension();
+
+        $productImage->storePubliclyAs("public/products", $productImageName);
+        $product->image = $productImageName;
+        }
+
+        $product->save();
+
+          return view('front.user.profile', compact ('products'));
     }
 
     /**
@@ -210,7 +239,7 @@ class ProductsController extends Controller
     {
       $search = $request -> input('search');
 
-      $products = Product::where('name','LIKE',"%$search%")->paginate(6);
+      $products = Product::where('name','LIKE',"%$search%")->where('project_id','!=', null)->paginate(6);
       $projects = Project::where('name','LIKE',"%$search%")->paginate(6);
 
       $categories = Category::all();

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -28,7 +30,9 @@ class UsersController extends Controller
 
     public function profile()
     {
-        return view('front.user.profile');
+      $products = Product::where('user_id', Auth::user()->id )->paginate(6);
+
+        return view('front.user.profile', compact('products'));
     }
 
     /**

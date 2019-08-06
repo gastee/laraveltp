@@ -1,7 +1,8 @@
 @extends('front.template')
 @section('pageTitle', 'Catálogo')
 @section('mainContent')
-<body >
+  <body >
+  <div class="container">
 
 {{-- {{ dd($products, $category) }} --}}
   <!-- Page Content -->
@@ -49,29 +50,60 @@
           </a>
         </div>
 
-        <div class="row">
 
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item One</a>
-                </h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+          @if (count($products)>=1)
+                  <ul>
+                    <h1 class="my-4">Productos</h1>
+                  <div class="row">
+                    @foreach ($products as $oneProduct)
+                      <div class="col-lg-4 col-md-6 mb-4" name='eachproduct' >
+                      <li>
+                      <div class="card h-100"  id='producto' >
+                        @if ( preg_match("/https/", $oneProduct->image ) == 1  )
+                          <a href="#"><img src="{{$oneProduct->image }}" src={{$oneProduct->image}} alt=""></a>
+                        @else
+                          <a href="#"><img src="/storage/products/{{ $oneProduct->image}}" alt=""></a>
+                        @endif
+                        <div class="card-body"  id="datosProducto">
+                          <h4 class="card-title">
+                            <p href="#">{{$oneProduct->name}}</p>
+                          </h4>
+                          <p class="card-text">Categoría: {{$oneProduct->category->name}}</p>
+                          <p class="card-text">Proyecto: {{$oneProduct->project->name}}</p>
+                        </div>
+                        <div class="card-footer" style="text-align: center">
+                          <div class="mr-auto">
+                              {{-- <button id="donate_button" class="btn btn-lg a_btn" type="button" >DONAR</button> --}}
+                            <a href='/product/create/{{$oneProduct->id}}'>
+                              <button type="button" class="btn btn-lg a_btn" onclick="donate()" >DONAR</button>
+                            </a>
+
+                                {{-- <script>
+                                  function donate() {
+                                    location.assign('/product/create/{{$oneProduct->id}}')
+                                  }
+                                </script> --}}
+                                <a href='/product/{{$oneProduct->id}}/edit'>
+                              <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
+                              </a>
+                              {{-- <script>
+                                function edit() {
+                                  location.assign('/product/{id}/edit')
+                                }
+                              </script> --}}
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </div>
+                  @endforeach
               </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
+              {{ $products->links() }}
+            </ul>
+              @endif
 
 
-        </div>
-        <!-- /.row -->
 
-      </div>
-      <!-- /.col-lg-9 -->
 
     </div>
     <!-- /.row -->

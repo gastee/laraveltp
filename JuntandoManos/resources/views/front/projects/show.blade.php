@@ -61,7 +61,11 @@
           <div class="">
           @if (count($products)>0)
                   <ul>
-                    <h1 class="my-4">Necesidades</h1>
+                    @if (Auth::user()->organization_id != null)
+                      <h1 class="my-4">Mis Solicitudes</h1>
+                      @else
+                        <h1 class="my-4">Necesidades</h1>
+                    @endif
                   <div class="row">
                     @foreach ($products as $oneProduct)
                       <div class="col-lg-4 col-md-6 mb-4" name='eachproduct' >
@@ -81,18 +85,22 @@
                         </div>
                         <div class="card-footer" style="text-align: center">
                           <div class="mr-auto">
-                            <a href='/product/create/{{$oneProduct->id}}'>
-                              <button type="button" class="btn btn-lg a_btn" onclick="donate()" >DONAR</button>
-                            </a>
+                            @if (Auth::user()->organization_id == null)
+                              <a href='/product/create/{{$oneProduct->id}}'>
+                                <button type="button" class="btn btn-lg a_btn" onclick="donate()" >DONAR</button>
+                              </a>
+                            @endif
 
                                 {{-- <script>
                                   function donate() {
                                     location.assign('/product/create/{{$oneProduct->id}}')
                                   }
                                 </script> --}}
+                                @if (Auth::user()->id == $oneProduct->user_id)
                                 <a href='/product/{{$oneProduct->id}}/edit'>
                               <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
                               </a>
+                                @endif
                               {{-- <script>
                                 function edit() {
                                   location.assign('/product/{id}/edit')
@@ -150,8 +158,8 @@
                     </li>
                   </div>
                   @endforeach
+                </div>
               {{ $offeredproducts->links() }}
-            </div>
             </ul>
               @endif
             </div>

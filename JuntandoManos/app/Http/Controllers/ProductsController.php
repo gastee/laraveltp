@@ -32,7 +32,24 @@ class ProductsController extends Controller
       $projects = [];
 
       return view('front.products.index', compact('products', 'category', 'categories', 'allprojects', 'projects'));
-      // return view('front.products.index');
+
+    }
+    public function donacindex($category = null)
+    {
+      if ($category) {
+
+      $products = Product::where('category_id', $category)->where('project_id', null)->paginate(6);
+      }
+      else {
+      $products = Product::where('project_id', null)->paginate(6);
+      }
+
+      $categories = Category::all();
+      $allprojects = Project::all();
+      $projects = [];
+
+      return view('front.products.donations', compact('products', 'category', 'categories', 'allprojects', 'projects'));
+
     }
 
     /**
@@ -41,29 +58,29 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // Muestra el formulario de crear producto (Cargar donación)
-    public function create($id)
+    // Muestra el formulario de crear producto para donar(Cargar donación)
+    public function create($id = null)
     {
-
+      if ($id) {
       $productoOrigen = Product::find($id);
-
-      // dd( $productoOrigen);
       $Category = $productoOrigen->category->name;
       $Name = $productoOrigen->name;
       $Project = $productoOrigen->Project->name;
+    }
+    else {
+      $productoOrigen = "";
+      $Category = "Categoría";
+      $Name = "Nombre";
+      $Project = "Proyecto";
+
+    }
       $categories = Category::all();
 
 
         return view('front.products.create', compact('Project', 'Category', 'Name', 'categories','productoOrigen'));
 
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // Guarda el producto creado por el usuario (Cargar donación)
     public function store(request $request)
     {
       $request->validate([
@@ -72,7 +89,10 @@ class ProductsController extends Controller
         'image' => 'required | image'
       ]);
         $project = Project::find($request['project']);
-        // dd( $project);
+        if ($project = null) {
+          $request['project'] = null;
+        }
+        // dd( $request['project']);
         $myorganization = Organization::where('user_id', Auth::user()->id)->get();
         if (count($myorganization)>0){
           $myOrgID = $myorganization[0]['id'];
@@ -97,6 +117,64 @@ class ProductsController extends Controller
           ]);
           return view('front.user.profile', compact('categories', 'project', 'products', 'projects'));
       }
+
+    // Muestra el formulario de crear pedido producto (Cargar donación)
+    public function orgcreate()
+    {
+      $userID = Auth::user()->id;
+      $myorganization = Organization::where('user_id', $userID)->get();
+      $myOrgID = $myorganization[0]['id'];
+      $Projects = Project::where('organization_id', $myOrgID)->get();
+      $productoOrigen = "";
+      $categories = Category::all();
+
+
+      return view('front.products.create', compact('categories', 'Projects','productoOrigen'));
+
+    }
+
+    // Guarda el producto creado por el usuario (Cargar donación)
+    public function orgstore(request $request)
+    {
+      $request->validate([
+
+        'description' => 'required',
+        'image' => 'image'
+      ]);
+        $project = Project::find($request['project']);
+        // if ($project = null) {
+        //   $request['project'] = null;
+        // }
+        // dd( $request['project']);
+        $userID = Auth::user()->id;
+        $myorganization = Organization::where('user_id', $userID)->get();
+        $myOrgID = $myorganization[0]['id'];
+        $projects = Project::where('organization_id', $myOrgID)->paginate(6);
+
+        $products = Product::where('user_id', Auth::user()->id )->paginate(6);
+        $categories = Category::all();
+        $productImage = $request->file('image');
+        $productImageName = uniqid('img-') . '.' . $productImage->extension();
+        $productImage->storePubliclyAs("public/products", $productImageName);
+        $userID = Auth::user()->id;
+         Product::create([
+              'name' => $request['product'],
+              'category_id' => $request['category'],
+              'image' => $productImageName,
+              'description' => $request['description'],
+              'user_id' => $userID ,
+              'project_id' => $request['project'] ,
+          ]);
+          return view('front.user.profile', compact('categories', 'project', 'products', 'projects'));
+      }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
 
 
     //   $product = new Product; // Objeto de tipo Product vacio
@@ -247,13 +325,28 @@ class ProductsController extends Controller
       $search = $request -> input('search');
 
       $products = Product::where('name','LIKE',"%$search%")->where('project_id','!=', null)->paginate(6);
-      $projects = Project::where('name','LIKE',"%$search%")->paginate(6);
+      // $projects = Project::where('name','LIKE',"%$search%")->paginate(6);
 
       $categories = Category::all();
       $allprojects = Project::all();
 
       // return view('front.products.index', compact('products', 'categories', 'allprojects'));
       return view('front.products.index', compact('products', 'categories', 'projects', 'allprojects'));
+      // return view('front.products.index');
+    }
+    public function donacsearch(Request $request)
+    {
+      $search = $request -> input('search');
+
+      $products = Product::where('name','LIKE',"%$search%")->where('project_id', null)->paginate(6);
+      // $projects = Project::where('name','LIKE',"%$search%")->paginate(6);
+      $projects = [];
+
+      $categories = Category::all();
+      $allprojects = Project::all();
+
+      // return view('front.products.index', compact('products', 'categories', 'allprojects'));
+      return view('front.products.donations', compact('products', 'categories', 'projects', 'allprojects'));
       // return view('front.products.index');
     }
 }

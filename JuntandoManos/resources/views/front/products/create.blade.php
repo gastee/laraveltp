@@ -18,14 +18,10 @@
     @csrf
     <div class="row justify-content-center">
       <div class="col-sm-8">
-        <h1>¡Cargá acá tu producto para donar a {{ $Project }}!</h1>
-        <div class="form-group">
-          <label for="product">Producto</label>
-          <input readonly style="background-color: lightgray;" type="text"  name="product" value="{{ $Name }}"
+        <h1>¡Cargá acá el producto!</h1>
+
           {{-- value="{{ $errors->has('name') ? null : old('name') }}" --}}
-          class="form-control"
-          data-nombre='Nombre del producto'
-          >
+
 {{--
         <div class="form-group">
           <label for="category">Proyecto</label>
@@ -35,23 +31,57 @@
                 <option value="{{ $Project->id }}">{{ $Project->name }}</option>
               @endforeach
             </select> --}}
+          </div>
+        @if ($productoOrigen != null)
+          <div class="form-group">
+            <label for="product">Producto</label>
 
-        </div>
+              <input readonly style="background-color: lightgray;" type="text"  name="product" value="{{ $Name }}"  class="form-control"
+                data-nombre='Nombre del producto'>
+
+          <div class="form-group">
+            <label for="category">Categoría</label>
+
+            <select readonly style="background-color: lightgray;" type="text" id="category" name="category" class="form-control">
+              <option value="{{ $productoOrigen->category_id }}" selected>{{ $productoOrigen->category->name }}</option>
+            </select>
+
+            <div class="form-group">
+              <label for="project">Proyecto</label>
+
+              <select readonly style="background-color: lightgray;" type="text" id="project" name="project" class="form-control">
+                <option value="{{ $productoOrigen->project_id }}" selected>{{ $productoOrigen->project->name }}</option>
+              </select>
+        
+        @else
+          <div class="form-group">
+            <label for="product">Producto</label>
+
+              <input  type="text"  name="product" value="Nombre"  class="form-control" data-nombre='Nombre del producto'>
+
         <div class="form-group">
           <label for="category">Categoría</label>
 
-          <select readonly style="background-color: lightgray;" type="text" id="category" name="category" class="form-control">
-            <option value="{{ $productoOrigen->category_id }}" selected>{{ $productoOrigen->category->name }}</option>
+          <select type="text" id="category" name="category" class="form-control">
+              @foreach ($categories as $Category)
+                <option value= "{{ $Category->id }}" selected>{{ $Category->name}}</option>
+
+              @endforeach
           </select>
 
-        <div class="form-group">
-          <label for="project">Proyecto</label>
+          @endif
 
-          <select readonly style="background-color: lightgray;" type="text" id="project" name="project" class="form-control">
-            <option value="{{ $productoOrigen->project_id }}" selected>{{ $productoOrigen->project->name }}</option>
-          </select>
+          @if (Auth::user()->organization_id != null)
+            <div class="form-group">
+              <label for="project">Proyecto</label>
 
+              <select type="text" id="project" name="project" class="form-control">
+                  @foreach ($Projects as $Proy)
+                    <option value= "{{ $Proy->id }}" selected>{{ $Proy->name}}</option>
 
+                  @endforeach
+              </select>
+           @endif
 
             <div class="form-group">
               <label>Danos una breve descripción <del></del> producto y su estado</label>
@@ -72,10 +102,15 @@
     						</span>
     					@endif
     			  </div>
-
-            <div class="form-group">
-              <button type="submit" class="btn a_btn">Donar producto</button>
-            </div>
+            @if (Auth::user()->organization_id != null)
+              <div class="form-group">
+                <button type="submit" class="btn a_btn">Solicitar producto</button>
+              </div>
+              @else
+                <div class="form-group">
+                  <button type="submit" class="btn a_btn">Donar producto</button>
+                </div>
+            @endif
 
         </div>
       </div>

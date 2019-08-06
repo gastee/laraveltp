@@ -15,7 +15,7 @@
           <ul>
             @foreach ($categories as $Category)
 
-              <li> <a href="/catalogue/index/{{$Category->id}}" class="list-group-item">{{$Category->name}}</a></li>
+              <li> <a href="/catalogue/donaciones/{{$Category->id}}" class="list-group-item">{{$Category->name}}</a></li>
 
         @endforeach
         </ul>
@@ -88,7 +88,7 @@
 
 @if (count($products)>0)
         <ul>
-          <h1 class="my-4">Necesidades</h1>
+          <h1 class="my-4">Productos Ofrecidos</h1>
         <div class="row">
           @foreach ($products as $oneProduct)
             <div class="col-lg-4 col-md-6 mb-4" name='eachproduct' >
@@ -111,8 +111,8 @@
               <div class="card-footer" style="text-align: center">
                 <div class="mr-auto">
                     {{-- <button id="donate_button" class="btn btn-lg a_btn" type="button" >DONAR</button> --}}
-                  <a href='/product/create/{{$oneProduct->id}}'>
-                    <button type="button" class="btn btn-lg a_btn" onclick="donate()" >DONAR</button>
+                  <a href='#'>
+                    <button type="button" class="btn btn-lg a_btn" onclick="donate()" >SOLICITAR</button>
                   </a>
 
                       {{-- <script>

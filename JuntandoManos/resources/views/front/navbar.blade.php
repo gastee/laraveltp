@@ -21,9 +21,21 @@
        <li class="nav-item">
          <a href="/projects" class="nav-link">Proyectos</a>
        </li>
-       <li class="nav-item">
-         <a href="/catalogue/index/" class="nav-link">Necesidades</a>
-       </li>
+@if (Auth::check())
+       @if (Auth::user()->organization_id == null)
+         <li class="nav-item">
+           <a href="/catalogue/index/" class="nav-link">Necesidades</a>
+         </li>
+       @endif
+
+       @if (Auth::user()->organization_id != null)
+         <li class="nav-item">
+           <a href="/catalogue/donaciones/" class="nav-link">Donaciones</a>
+         </li>
+       @endif
+@endif
+
+
         @if  (!Auth::check())
          <li class="nav-item">
            <a href="/login" class="nav-link">Ingresar</a>
@@ -48,8 +60,8 @@
            <a href="#" class="dropdown-item">
            <form class="" action="logout" method="post">
              @csrf
-             <button type="submit" name="button">Logout</button>
-           </form>
+            <button type="submit" name="button">Logout</button>
+            </form>
          </a>
 
          </div>
@@ -70,6 +82,23 @@
           <a href="/faq" class="dropdown-item">FAQ</a>
         </div>
        </li>
+       @if (Auth::check())
+       @if (Auth::user()->organization_id == null)
+         <div class="form-group">
+           <a href="/product/create">
+             <button type="submit" class="btn a_btn">Donar producto</button>
+           </a>
+         </div>
+        @endif
+       @if (Auth::user()->organization_id != null)
+         <div class="form-group">
+           <a href="/product/org-create">
+             <button type="submit" class="btn a_btn">Pedir Nuevo producto</button>
+           </a>
+         </div>
+        @endif
+      @endif
+
 
 
 

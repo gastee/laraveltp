@@ -15,14 +15,23 @@ class ProjectsController extends Controller{
     public function index(){
 
 
+        $userOrg = Auth::user()->organization_id;
         $categories = Category::all();
-        $projects = Project::paginate(6);
         $organizations = Organization::all();
+        if ($userOrg != null) {
+        $Myprojects = Project::where('organization_id', $userOrg)->paginate(6);
+        $projects = Project::where('organization_id', '!=', $userOrg)->paginate(6);
+        }
+        else {
+          $projects = Project::paginate(6);
+          $Myprojects = [];
+        }
 
 
 
 
-        return view('front.projects.index', compact('projects', 'categories', 'organizations'));
+
+        return view('front.projects.index', compact('projects', 'categories', 'organizations','Myprojects'));
         // return view('front.products.index');
       }
     public function show($id){

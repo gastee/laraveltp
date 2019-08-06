@@ -49,9 +49,56 @@
 
         @include('front.productview')
 
+        @if (count($Myprojects)>0)
+                <ul>
+                  <h1 class="my-4">Mis Proyectos</h1>
+                <div class="row">
+                  @foreach ($Myprojects as $oneProyect)
+                    <div class="col-lg-4 col-md-6 mb-4" name='eachproject' >
+                    <li>
+                    <div class="card h-100"  id='project' >
+                      @if ( preg_match("/https/", $oneProyect->image ) == 1  )
+                        <a href="#"><img src="{{$oneProyect->image }}" src={{$oneProyect->image}} alt=""></a>
+                      @else
+                        <a href="#"><img src="/storage/projects/{{ $oneProyect->image}}" alt=""></a>
+                      @endif
+                      <div class="card-body"  id="datosProyecto">
+                        <h4 class="card-title">
+                          <p href="#">{{$oneProyect->name}}</p>
+                        </h4>
+                        <p class="card-text">Descripción: {{$oneProyect->description}}</p>
+                        </div>
+                      <div class="card-footer" style="text-align: center">
+                        <div class="mr-auto">
+                          <a href='/projects/{{$oneProyect->id}}'>
+                            <button type="button" class="btn btn-lg a_btn" onclick="" >ACCEDER</button>
+                          </a>
+
+
+                              {{-- <a href='/product/{{$oneProduct->id}}/edit'>
+                            <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
+                            </a> --}}
+
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </div>
+                @endforeach
+            </div>
+            {{ $Myprojects->links() }}
+          </ul>
+            @endif
+
         @if (count($projects)>0)
                 <ul>
+                  @if (Auth::check())
+                  @if (Auth::user()->organization_id != null)
+                    <h1 class="my-4">Otros Proyectos</h1>
+                    @else
                   <h1 class="my-4">Proyectos</h1>
+                @endif
+              @endif
                 <div class="row">
                   @foreach ($projects as $oneProyect)
                     <div class="col-lg-4 col-md-6 mb-4" name='eachproject' >
@@ -89,6 +136,8 @@
             {{ $projects->links() }}
           </ul>
             @endif
+
+
 
           <!-- /.row -->
 

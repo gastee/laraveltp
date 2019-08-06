@@ -30,11 +30,24 @@
                       </div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('usersUpdate', Auth::user()->id) }}" enctype="multipart/form-data">
-                            @csrf
 
-                            {{ method_field('put') }}
+                            @if (Auth::user()->organization_id != null )
+                              <form class="" action="" method="get">
 
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Organizacion</label>
+
+                                <div class="col-md-6">
+                                    <input readonly style="background-color: lightgray;"   id="organization_id" type="text" class="form-control @error('organization_id') is-invalid @enderror" name="organization_id" value="{{ Auth::user()->Organization->name }}" autocomplete="organization_id" autofocus>
+
+                                </div>
+                            </div>
+                          </form>
+                            @endif
+                            <form method="POST" action="{{ route('usersUpdate', Auth::user()->id) }}" enctype="multipart/form-data">
+                              @csrf
+
+                              {{ method_field('put') }}
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Nombre completo</label>
 
@@ -64,7 +77,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right form-control">E-mail</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">E-mail</label>
 
                                 <div class="col-md-6">
                                     <input id="email"
@@ -146,29 +159,30 @@
                     </div>
 
 
+                    @if (Auth::user()->organization_id != null)
 
                         @if (count($projects)>0)
                                 <ul>
                                   <h1 class="my-4">Mis Proyectos</h1>
                                 <div class="row">
-                                  @foreach ($projects as $oneProyect)
+                                  @foreach ($projects as $oneProject)
                                     <div class="col-lg-4 col-md-6 mb-4" name='eachproject' >
                                     <li>
                                     <div class="card h-100"  id='project' >
-                                      @if ( preg_match("/https/", $oneProyect->image ) == 1  )
-                                        <a href="#"><img src="{{$oneProyect->image }}" src={{$oneProyect->image}} alt=""></a>
+                                      @if ( preg_match("/https/", $oneProject->image ) == 1  )
+                                        <a href="#"><img src="{{$oneProject->image }}" src={{$oneProject->image}} alt=""></a>
                                       @else
-                                        <a href="#"><img src="/storage/projects/{{ $oneProyect->image}}" alt=""></a>
+                                        <a href="#"><img src="/storage/projects/{{ $oneProject->image}}" alt=""></a>
                                       @endif
                                       <div class="card-body"  id="datosProyecto">
                                         <h4 class="card-title">
-                                          <p href="#">{{$oneProyect->name}}</p>
+                                          <p href="#">{{$oneProject->name}}</p>
                                         </h4>
-                                        <p class="card-text">Descripción: {{$oneProyect->description}}</p>
+                                        <p class="card-text">Descripción: {{$oneProject->description}}</p>
                                         </div>
                                       <div class="card-footer" style="text-align: center">
                                         <div class="mr-auto">
-                                          <a href='/projects/{{$oneProyect->id}}'>
+                                          <a href='/projects/{{$oneProject->id}}'>
                                             <button type="button" class="btn btn-lg a_btn" onclick="" >ACCEDER</button>
                                           </a>
 
@@ -187,10 +201,16 @@
                             {{ $projects->links() }}
                           </ul>
                             @endif
+                          @endif
 
                             @if (count($products)>0)
                               <ul>
-                                <h1 class="my-4">Mis Donaciones</h1>
+                                @if (Auth::user()->organization_id != null )
+                                  <h1 class="my-4">Todos mis Pedidos</h1>
+                                  @else
+                                  <h1 class="my-4">Mis Donaciones</h1>
+
+                                @endif
                                 <div class="row">
                                   @foreach ($products as $oneProduct)
                                     <div class="col-lg-4 col-md-6 mb-4" name='eachproduct' >
@@ -206,7 +226,10 @@
                                               <p href="#">{{$oneProduct->name}}</p>
                                             </h4>
                                             <p class="card-text">Categoría: {{$oneProduct->category->name}}</p>
-                                            <p class="card-text">Proyecto: {{$oneProduct->project->name}}</p>
+                                            @if ($oneProduct->project)
+                                              <p class="card-text">Proyecto: {{$oneProduct->project->name}}</p>
+
+                                            @endif
                                           </div>
                                           <div class="card-footer" style="text-align: center">
                                             <div class="mr-auto">

@@ -112,11 +112,11 @@
                                 </select>
 
 
-                                <span class="invalid-feedback" role="alert">
+                                {{-- <span class="invalid-feedback" role="alert">
                                     @error('province')
                                     <strong>{{ $message }}</strong>
                                     @enderror
-                                </span>
+                                </span> --}}
 
                             </div>
                         </div>

@@ -51,12 +51,12 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:50'],
-            'username' => ['required', 'string', 'max:25'],
+            'username' => ['required', 'string', 'max:25', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'min:8', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
             //'password_confirmation' => ['required', 'min:8', '', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
             'country' => ['required', 'string', 'max:25'],
-            'province' => ['string', 'max:25'],
+            // 'province' => ['string', 'max:25'],
             'avatar' => ['required', 'image'],
         ], [
 					'required' => 'El campo :attribute es obligatorio',

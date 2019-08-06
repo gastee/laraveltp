@@ -54,7 +54,7 @@
 
 
             <div class="form-group">
-              <label>Danos una breve descripción del producto y su estado</label>
+              <label>Danos una breve descripción <del></del> producto y su estado</label>
                <div class="col-sm-8">
                 <textarea class= "text-area" name="description" rows="3" cols="100"></textarea>
               </div>

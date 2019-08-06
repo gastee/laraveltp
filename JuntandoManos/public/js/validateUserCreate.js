@@ -5,6 +5,9 @@ var theForm = document.querySelector('form');
 // Obtenemos todos los campos, pero parseamos la colección a un Array
 var formInputs = Array.from(theForm.elements);
 
+// Sacamos la provincia del array que no es obligatoria
+formInputs.splice(pos, 6);
+
 // Sacamos la 1er posición del array que es el un <input> hidden del token
 formInputs.shift();
 

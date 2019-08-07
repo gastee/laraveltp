@@ -18,7 +18,7 @@
     @csrf
     <div class="row justify-content-center">
       <div class="col-sm-8">
-        <h1>¡Cargá acá el producto!</h1>
+        <h1>¡Cargá acá tu producto!</h1>
 
           {{-- value="{{ $errors->has('name') ? null : old('name') }}" --}}
 
@@ -84,10 +84,8 @@
            @endif
 
             <div class="form-group">
-              <label>Danos una breve descripción <del></del> producto y su estado</label>
-               <div class="col-sm-8">
-                <textarea class= "text-area" name="description" rows="3" cols="100"></textarea>
-              </div>
+              <label>Danos una breve descripción producto y su estado</label>
+              <textarea class= "text-area" name="description" rows="3" cols="100%"></textarea>
             </div>
 
             <div class="form-group">

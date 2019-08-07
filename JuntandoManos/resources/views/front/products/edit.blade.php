@@ -54,7 +54,7 @@
               <option value="{{ $cat->id }}">{{ $cat->name }}</option>
             @endforeach
           </select>
-
+        </div>
 
         {{-- <div class="form-group">
           <label for="project">Proyecto</label>
@@ -71,10 +71,8 @@
 
 
             <div class="form-group">
-              <label>Danos una breve descripción de tu producto y su estado</label>
-               <div class="col-sm-8">
-                <textarea class= "text-area" name="description" rows="3" cols="100"></textarea>
-              </div>
+              <label>Danos una breve descripción producto y su estado</label>
+                <textarea class= "text-area" name="description" rows="3" cols="100%"></textarea>
             </div>
 
             <div class="form-group">

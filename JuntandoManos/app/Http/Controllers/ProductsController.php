@@ -330,7 +330,7 @@ class ProductsController extends Controller
       $productToDelete->delete();
 
       // Redirecciono a una RUTA
-      return redirect('front.products.create');
+      return redirect('/profile');
     }
 
     public function projectProducts($project_id)

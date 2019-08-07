@@ -57,11 +57,13 @@
          <div class="dropdown-menu" aria-labelledby="dropdown_target">
            <a href="/profile" class="dropdown-item">Mi Perfil</a>
            <div class="dropdown-divider"></div>
-           <a href="#" class="dropdown-item">
-           <form class="" action="logout" method="post">
+           <a href="{{ url('/logout') }}" class="dropdown-item">
+            Logout
+
+           {{-- <form class="" action="" method="post">
              @csrf
             <button type="submit" name="button">Logout</button>
-            </form>
+            </form> --}}
          </a>
 
          </div>

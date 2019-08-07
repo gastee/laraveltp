@@ -45,7 +45,7 @@ Route::get('/projects/update/{id}', 'ProjectsController@')->middleware('auth');
 // Route::post('/register', 'UsersController@store');
 
 Auth::routes();
-
+Route::get('/logout', 'UsersController@logout');
 // Route::post('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get("/home", function () {

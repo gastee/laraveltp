@@ -361,6 +361,8 @@ class ProductsController extends Controller
       $products = Product::where('name','LIKE',"%$search%")->where('project_id','!=', null)->paginate(6);
       // $projects = Project::where('name','LIKE',"%$search%")->paginate(6);
 
+      $projects = [];
+
       $categories = Category::all();
       $allprojects = Project::all();
 

@@ -68,8 +68,17 @@ class ProjectsController extends Controller{
 
         $categories = Category::all();
         $allprojects = Project::all();
+        $userOrg = Auth::user()->organization_id;
+        if ($userOrg != null) {
+        $Myprojects = Project::where('organization_id', $userOrg)->where('name','LIKE',"%$search%")->paginate(6);
+        $projects = Project::where('organization_id', '!=', $userOrg)->where('name','LIKE',"%$search%")->paginate(6);
+        }
+        else {
+          $projects = Project::where('name','LIKE',"%$search%")->paginate(6);
+          $Myprojects = [];
+        }
 
-        return view('front.projects.index', compact('categories', 'projects', 'allprojects'));
+        return view('front.projects.index', compact('categories', 'projects', 'allprojects', 'Myprojects'));
 
       }
 

@@ -106,7 +106,10 @@
                 <p class="card-text">Categoría: {{$oneProduct->category->name}}</p>
                 @if ($oneProduct->project)
                   <p class="card-text">Proyecto: {{$oneProduct->project->name}}</p>
-                                  @endif
+                @endif
+                @if ($oneProduct->description)
+                  <p id='descripcionProd' class="card-text" style="display:none">Descripción: {{$oneProduct->description}}</p>
+                @endif
               </div>
               <div class="card-footer" style="text-align: center">
                 <div class="mr-auto">
@@ -194,11 +197,13 @@
             overlay2.style.display = "block";
             var datosProducto = overlay2.getElementsByTagName('li')[0].getElementsByTagName('div')[0].getElementsByTagName('div')[0];
             var imagenProducto = overlay2.getElementsByTagName('li')[0].getElementsByTagName('div')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+            var descProducto = overlay2.getElementsByTagName('li')[0].getElementsByTagName('div')[0].getElementsByTagName('div')[0].getElementsByTagName('p')[3];
             // .querySelector('datosProducto');
             // datosProducto.innerHTML += "<br>lalsalsalsalasdl<br>";
             datosProducto.style.height = "25vh";
             datosProducto.style.overflow = "hidden";
             imagenProducto.style.maxHeight = "60vh";
+            descProducto.style.display ="block";
 
             }
           });

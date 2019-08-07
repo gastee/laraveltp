@@ -28,7 +28,7 @@ formInputs.forEach(function (oneInput) {
 			// Si el campo está vacío, le agrego la clase 'is-invalid'
 			this.classList.add('is-invalid');
 			// Ademas, al <div> con clase 'invalid-feedback' le agremamos el texto de error
-			this.nextElementSibling.innerHTML = 'El campo <b>' + this.getAttribute('name') + '</b> es obligatorio';
+			this.nextElementSibling.innerHTML = 'El campo <b>' + this.getAttribute('data-nombre') + '</b> es obligatorio';
 			// Si un campo tiene error, creamos una key con el nombre del campo y valor true
 			errorsObj[this.name] = true;
 		} else {

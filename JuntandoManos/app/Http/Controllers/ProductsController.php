@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use App\Project;
 use App\Organization;
+use App\User;
 use Auth;
 
 class ProductsController extends Controller
@@ -19,6 +20,8 @@ class ProductsController extends Controller
      */
     public function index($category = null)
     {
+
+
       if ($category) {
 
       $products = Product::where('category_id', $category)->where('project_id','!=', null)->paginate(6);
@@ -107,7 +110,7 @@ class ProductsController extends Controller
         $productImageName = uniqid('img-') . '.' . $productImage->extension();
         $productImage->storePubliclyAs("public/products", $productImageName);
         $userID = Auth::user()->id;
-         Product::create([
+        $product = Product::create([
               'name' => $request['product'],
               'category_id' => $request['category'],
               'image' => $productImageName,
@@ -115,7 +118,9 @@ class ProductsController extends Controller
               'user_id' => $userID ,
               'project_id' => $request['project'] ,
           ]);
-          return view('front.user.profile', compact('categories', 'project', 'products', 'projects'));
+          // return view('front.user.profile', compact('categories', 'project', 'products', 'projects'));
+          // dd( $product);
+          return redirect('/profile')->with('products',$products)->with('categories',$categories)->with('projects',$projects)->with('project',$project);
       }
 
     // Muestra el formulario de crear pedido producto (Cargar donación)
@@ -165,8 +170,8 @@ class ProductsController extends Controller
               'user_id' => $userID ,
               'project_id' => $request['project'] ,
           ]);
-          return view('front.user.profile', compact('categories', 'project', 'products', 'projects'));
-      }
+          return redirect('/profile')->with('product',$product)->with('products',$products)->with('categories',$categories)->with('projects',$projects);
+          }
 
     /**
      * Store a newly created resource in storage.
@@ -241,7 +246,12 @@ class ProductsController extends Controller
     {
       // Busco el producto
       $product = Product::find($id);
-      $Project = $product->Project->name;
+      if ($product->Project) {
+        $Project = $product->Project->name;
+      }else {
+
+        $Project ="";
+      }
       $Name = $product->name;
       $Category = $product->category->name;
 
@@ -249,6 +259,7 @@ class ProductsController extends Controller
       // Busco las categorías y proyectos
       $categories = Category::all();
       $projects = Project::all();
+
       return view('front.products.edit', compact('product', 'categories', 'projects', 'Project', 'Name', 'Category'));
 
 
@@ -268,9 +279,19 @@ class ProductsController extends Controller
 
           'image' => 'image'
         ]);
+        // dd( $request);
+        // dd($request['category']);
+        $userID = Auth::user()->id;
+        if (Auth::user()->organization_id != null) {
+        $myorganization = Organization::where('user_id', $userID)->get();
+        $myOrgID = $myorganization[0]['id'];
+        $projects = Project::where('organization_id', $myOrgID)->paginate(6);
+      }else {
+        $projects = [];
+      }
 
-        $product = Product::find($id);
-        $products = Product::where('user_id', Auth::user()->id )->paginate(6);
+      $product = Product::find($id);
+      $products = Product::where('user_id', Auth::user()->id )->paginate(6);
 
           		// Asocio atributos con valores
     		$product->name = $request['product'];
@@ -288,8 +309,10 @@ class ProductsController extends Controller
         }
 
         $product->save();
+        $categories = Category::all();
 
-          return view('front.user.profile', compact ('products'));
+        return redirect('/profile')->with('product',$product)->with('products',$products)->with('categories',$categories)->with('projects',$projects);
+          // return view('front.user.profile', compact ('product','products', 'categories', 'projects'));
     }
 
     /**

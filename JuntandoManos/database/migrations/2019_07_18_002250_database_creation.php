@@ -38,7 +38,7 @@ class DatabaseCreation extends Migration
       Schema::create('projects', function (Blueprint $table) {
           $table->Increments('id');
           $table->integer('organization_id')->nullable();
-          $table->string('name');
+          $table->string('name')->unique();;
           $table->string('address')->nullable();
           $table->string('contact_name')->nullable();
           $table->string('contact_phone')->nullable();
@@ -61,7 +61,7 @@ class DatabaseCreation extends Migration
       });
       Schema::create('categories', function (Blueprint $table) {
           $table->Increments('id');
-          $table->string('name');
+          $table->string('name')->unique();;
           // $table->integer('product_id')->nullable();
           $table->timestamps();
       });

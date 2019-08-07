@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">Nombre completo</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" data-nombre='Nombre' name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
 
                                 <span class="invalid-feedback" role="alert">
                                 @error('name')
@@ -29,7 +29,7 @@
                             <label for="username" class="col-md-4 col-form-label text-md-right">Nombre de usuario</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" data-nombre='Nombre de Usuario' name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
 
 
                                     <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">E-mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" data-nombre='Email' name="email" value="{{ old('email') }}" autocomplete="email">
 
                                   <span class="invalid-feedback" role="alert">
                                     @error('email')
@@ -60,7 +60,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" data-nombre='Contraseña' name="password" autocomplete="new-password">
 
                                 <span class="invalid-feedback" role="alert">
                                 @error('password')
@@ -89,7 +89,7 @@
                             <label for="country" class="col-md-4 col-form-label text-md-right">Pais</label>
 
                             <div class="col-md-6">
-                                <select id="country" name="country" class="form-control">
+                                <select id="country" name="country" class="form-control" data-nombre='País'>
                                   <option value="">Elegí un país</option>
                                 </select>
 
@@ -130,6 +130,7 @@
                                   type="file"
                                   name="avatar"
                                   class="custom-file-input  @error('avatar') is-invalid @enderror"
+                                    data-nombre='Avatar'
                                 >
                                 <label class="custom-file-label">Elegir archivo</label>
 

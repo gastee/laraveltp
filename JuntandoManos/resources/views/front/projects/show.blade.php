@@ -148,9 +148,14 @@
                             </a> --}}
 
 
-                                <a href='#'>
-                              <button type="button" class="btn btn-lg a_btn" onclick="edit" >SOLICITAR</button>
-                              </a>
+
+                              <button type="button" class="btn btn-lg a_btn" onclick="DatosUser()" >SOLICITAR</button>
+                              <script>
+                                function DatosUser() {
+                                  alert("Este Producto fue ofrecido por {{$oneProduct->user->name}}. Su correo electronico es: {{$oneProduct->user->email}}");
+                                }
+                                </script>
+
 
                           </div>
                         </div>

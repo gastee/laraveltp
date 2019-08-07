@@ -45,6 +45,6 @@ public function products()
 
 public function organization()
 {
-  return $this->hasOne(Organization::class);
+  return $this->belongsTo(Organization::class);
 }
 }

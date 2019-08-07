@@ -12,6 +12,8 @@ $factory->define(Organization::class, function (Faker $faker) {
       'Red solidaria',
       'Caritas Argentina',
       'Fundación Cimientos',
+      'Juntando Manos',
+      'Fundación Sí'
     ])
   ];
 });

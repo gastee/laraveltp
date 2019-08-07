@@ -9,11 +9,13 @@ $factory->define(Project::class, function (Faker $faker) {
 
       return [
         'image' => $faker->imageUrl(200, 200, 'abstract'),
-        'name' => $faker->randomElement([
+        'name' => $faker->unique()->randomElement([
   				'Comedor Las Pepas',
   			  'Escuela EP Nro 6 - La Matanza',
   			  'Familia Pérez - Incendio',
   			  'Hogar de día Las Margaritas',
+  			  'Merendero Chespirito',
+  			  'Hogar Alegría',
         ])
       ];
   });

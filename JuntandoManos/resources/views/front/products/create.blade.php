@@ -3,7 +3,7 @@
 @section('pageTitle', 'Cargar donación')
 
 @section('mainContent')
-  <body >
+  <body>
   <div class="container">
   {{-- Errores si los hubiera --}}
   {{-- @if (count($errors))
@@ -14,7 +14,7 @@
     </ul>
   @endif --}}
 
-  <form class="" action="" method="POST" enctype="multipart/form-data">
+  <form class="" action="" method="POST" enctype="multipart/form-data" id="Formulario">
     @csrf
     <div class="row justify-content-center">
       <div class="col-sm-8">
@@ -52,7 +52,7 @@
               <select readonly style="background-color: lightgray;" type="text" id="project" name="project" class="form-control">
                 <option value="{{ $productoOrigen->project_id }}" selected>{{ $productoOrigen->project->name }}</option>
               </select>
-        
+
         @else
           <div class="form-group">
             <label for="product">Producto</label>
@@ -108,13 +108,49 @@
               </div>
               @else
                 <div class="form-group">
-                  <button type="submit" class="btn a_btn">Donar producto</button>
+                  <button type="submit" id="BottonDonar" class="btn a_btn">Donar producto</button>
                 </div>
             @endif
 
         </div>
       </div>
     </div>
+
+
+    {{-- <button type="button" id="Negro" class="btn a_btn">Negro</button>
+    <button type="button" id="Color" class="btn a_btn">Color</button> --}}
+
+    {{-- <script>
+
+    var Negro = document.getElementById('Negro');
+    // var isColored = false;
+    Negro.addEventListener("click", function(){
+        document.body.style.background = '#353535';
+        document.body.style.color = '#FFF';});
+
+    var Color = document.getElementById('Color');
+    Color.addEventListener("click", function(){
+        document.body.style.background = 'white';
+        document.body.style.color = '#353535';
+      });
+
+      </script> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </form>
 </div>
 <script src="/js/validateForms.js"></script>

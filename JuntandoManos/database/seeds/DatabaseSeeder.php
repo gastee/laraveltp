@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Http\Request;
+use App\Product;
+use App\Category;
+use App\Project;
+use App\Organization;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,6 +38,13 @@ class DatabaseSeeder extends Seeder
         foreach ($organizations as $oneONG) {
           $oneONG->user()->associate($users->random(1)->first()->id);
   				$oneONG->save();
-  				}
+          }
+          foreach ($organizations as $oneONG) {
+            $user = $oneONG->User->id;
+            $ElUser = User::find($user);
+            $ElUser->organization()->associate($oneONG->id);
+            // $ElUser->organization_id = $oneONG->id;
+            $ElUser->save();
+            }
+          }
     }
-}

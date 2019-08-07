@@ -205,12 +205,11 @@
 
                             @if (count($products)>0)
                               <ul>
-                                @if (Auth::user()->organization_id != null )
-                                  <h1 class="my-4">Todos mis Pedidos</h1>
-                                  @else
-                                  <h1 class="my-4">Mis Donaciones</h1>
-
-                                @endif
+                                        @if (Auth::user()->organization_id != null )
+                                          <h1 class="my-4">Todos mis Pedidos</h1>
+                                          @else
+                                          <h1 class="my-4">Mis Donaciones</h1>
+                                        @endif
                                 <div class="row">
                                   @foreach ($products as $oneProduct)
                                     <div class="col-lg-4 col-md-6 mb-4" name='eachproduct' >
@@ -234,19 +233,10 @@
                                           <div class="card-footer" style="text-align: center">
                                             <div class="mr-auto">
 
-                                              {{-- <script>
-                                              function donate() {
-                                              location.assign('/product/create/{{$oneProduct->id}}')
-                                            }
-                                          </script> --}}
                                           <a href='/product/{{$oneProduct->id}}/edit'>
                                             <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
                                           </a>
-                                          {{-- <script>
-                                          function edit() {
-                                          location.assign('/product/{id}/edit')
-                                        }
-                                      </script> --}}
+
                                     </div>
                                   </div>
                                 </div>

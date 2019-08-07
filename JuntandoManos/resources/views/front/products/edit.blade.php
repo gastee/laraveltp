@@ -22,9 +22,9 @@
     @csrf
 
     @if (Auth::user()->organization_id != null)
-      <h1>¡Cargá acá tu solicitud!</h1>
+      <h1>¡Editá acá tu solicitud de producto!</h1>
       @else
-        <h1>¡Cargá acá tu producto para donar!</h1>
+        <h1>¡Editá acá tu producto para donar!</h1>
 
     @endif
         <div class="form-group">
@@ -90,9 +90,11 @@
 
             <div class="form-group">
                 @if (Auth::user()->organization_id != null)
-              <button type="submit" class="btn a_btn">Solicitar producto</button>
+              <button type="submit" class="btn a_btn">EDITAR</button>
+              <button type="submit" class="btn btn-outline-danger">ELIMINAR</button>
               @else
-              <button type="submit" class="btn a_btn">Donar producto</button>
+              <button type="submit" class="btn a_btn">EDITAR</button>
+              <button type="submit" class="btn btn-outline-danger">ELIMINAR</button>
               @endif
             </div>
 

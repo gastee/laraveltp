@@ -234,8 +234,9 @@
                                             <div class="mr-auto">
 
                                           <a href='/product/{{$oneProduct->id}}/edit'>
-                                            <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
-                                          </a>
+                                            <button type="submit" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
+                                            <button type="submit" class="btn btn-outline-danger">ELIMINAR</button>
+                                        </a>
 
                                     </div>
                                   </div>

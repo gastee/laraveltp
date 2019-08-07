@@ -102,11 +102,11 @@
     			  </div>
             @if (Auth::user()->organization_id != null)
               <div class="form-group">
-                <button type="submit" class="btn a_btn">Solicitar producto</button>
+                <button type="submit" class="btn a_btn">SOLICITAR</button>
               </div>
               @else
                 <div class="form-group">
-                  <button type="submit" id="BottonDonar" class="btn a_btn">Donar producto</button>
+                  <button type="submit" id="BottonDonar" class="btn a_btn">DONAR</button>
                 </div>
             @endif
 

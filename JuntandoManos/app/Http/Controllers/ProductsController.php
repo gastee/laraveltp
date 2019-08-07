@@ -134,7 +134,7 @@ class ProductsController extends Controller
       $categories = Category::all();
 
 
-      return view('front.products.create', compact('categories', 'Projects','productoOrigen'));
+    return view('front.products.create', compact('categories', 'Projects','productoOrigen'));
 
     }
 
@@ -170,7 +170,7 @@ class ProductsController extends Controller
               'user_id' => $userID ,
               'project_id' => $request['project'] ,
           ]);
-          return redirect('/profile')->with('product',$product)->with('products',$products)->with('categories',$categories)->with('projects',$projects);
+          return redirect('/profile')->with('products',$products)->with('categories',$categories)->with('projects',$projects);
           }
 
     /**
@@ -329,8 +329,19 @@ class ProductsController extends Controller
       // Lo borro
       $productToDelete->delete();
 
+
+      $products = Product::where('user_id', Auth::user()->id )->paginate(6);
+      $myorganization = Organization::where('user_id', Auth::user()->id)->get();
+      if (count($myorganization)>0){
+        $myOrgID = $myorganization[0]['id'];
+        $projects = Project::where('organization_id', $myOrgID)->paginate(6);
+      }
+      else {
+        $projects = [];
+      }
+
       // Redirecciono a una RUTA
-      return redirect('/profile');
+      return redirect('/profile')->with('products',$products)->with('projects',$projects);
     }
 
     public function projectProducts($project_id)

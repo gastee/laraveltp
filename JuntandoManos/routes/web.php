@@ -27,7 +27,7 @@ Route::post('/product/org-create', 'ProductsController@orgstore')->middleware('a
 Route::get('/product/{id}', 'ProductsController@show')->middleware('auth');
 Route::put('/product/{id}/edit', 'ProductsController@update')->name('ProductUpdate')->middleware('auth');
 Route::get('/product/{id}/edit', 'ProductsController@edit')->middleware('auth'); // Formulario para editar
-Route::delete('product/delete/{id?}', 'ProductsController@destroy')->middleware('auth');
+Route::delete('/product/delete/{id}', 'ProductsController@destroy')->middleware('auth'); // Borrar
 
 
 

@@ -95,21 +95,21 @@
             <div class="form-group">
                 @if (Auth::user()->organization_id != null)
               <button type="submit" class="btn a_btn">EDITAR</button>
-              <button type="submit" class="btn btn-outline-danger">ELIMINAR</button>
+
               @else
               <button type="submit" class="btn a_btn">EDITAR</button>
-              <button type="submit" class="btn btn-outline-danger">ELIMINAR</button>
+
               @endif
-              <form class="" action="/product/delete" method="POST" >
-                {{method_field('put')}}
-                @csrf
-                <button type="submit" action="/product/delete" class="btn a_btn">Eliminar producto</button>
-              </form>
             </div>
 
         </div>
+      </form>
+      <form action="/product/delete/{{ $product->id }}" method="POST" >
+        @csrf
+        {{method_field('DELETE')}}
+        <button type="submit" class="btn btn-outline-danger">ELIMINAR</button>
+      </form>
       </div>
-</form>
 </div>
 </div>
 </div>

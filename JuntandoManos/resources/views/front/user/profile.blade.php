@@ -235,8 +235,12 @@
 
                                           <a href='/product/{{$oneProduct->id}}/edit'>
                                             <button type="submit" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
+                                          </a>
+                                          <form action="/product/delete/{{ $oneProduct->id }}" method="POST" >
+                                            @csrf
+                                            {{method_field('DELETE')}}
                                             <button type="submit" class="btn btn-outline-danger">ELIMINAR</button>
-                                        </a>
+                                          </form>
 
                                     </div>
                                   </div>

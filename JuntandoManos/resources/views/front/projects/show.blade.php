@@ -100,6 +100,30 @@
                                 <a href='/product/{{$oneProduct->id}}/edit'>
                               <button type="button" class="btn btn-lg a_btn" onclick="edit" >EDITAR</button>
                               </a>
+                              <form action="/product/delete/{{ $oneProduct->id }}" method="POST" >
+                                @csrf
+                                {{method_field('DELETE')}}
+                                <button id="BotonEliminar" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirm">ELIMINAR</button>
+
+
+                                              <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h2>ATENCIÓN!</h2>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                      <p>¿Estás seugro que queres eliminar el producto?</p>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                      <button type="submit" class="btn btn-outline-danger" id:>ELIMINAR</button>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                              </form>
+
                                 @endif
                               {{-- <script>
                                 function edit() {

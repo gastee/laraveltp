@@ -129,7 +129,7 @@ class ProductsController extends Controller
       $userID = Auth::user()->id;
       $myorganization = Organization::where('user_id', $userID)->get();
       $myOrgID = $myorganization[0]['id'];
-      $Projects = Project::where('organization_id', $myOrgID)->get();
+      $Projects = Project::where('organization_id', Auth::user()->organization_id)->get();
       $productoOrigen = "";
       $categories = Category::all();
 

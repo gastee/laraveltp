@@ -1,4 +1,4 @@
-    <footer class="container-fluid text-center">
+    <footer class="container-fluid text-center footer">
       <div class="row">
 
         <div class="col-sm-4">

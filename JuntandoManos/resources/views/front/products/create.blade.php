@@ -78,7 +78,6 @@
               <select type="text" id="project" name="project" class="form-control">
                   @foreach ($Projects as $Proy)
                     <option value= "{{ $Proy->id }}" selected>{{ $Proy->name}}</option>
-
                   @endforeach
               </select>
            @endif

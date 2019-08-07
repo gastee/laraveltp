@@ -205,11 +205,14 @@ width: 100% !important;
   /* -------------------------Navbar------------------------- */
 
 .navbar {
-  background-color:transparent !important;
+  background-color:transparent;
   padding:1% 0;
   font-size:1.2em;
   position: sticky;
   z-index: 100;
+}
+.navbar-collapse {
+  background-color: #f5e7de;
 }
 
 .navbar-nav a {
@@ -217,7 +220,7 @@ width: 100% !important;
 }
 
 .navbar_rec {
-  background-color: #f5e7de;
+  background-color: transparent;
   height:100px;
   width:100%;
   position: fixed;
@@ -346,6 +349,9 @@ width: 100% !important;
 }
 
     /* -------------------------Footer------------------------- */
+.footer {
+  background-color: transparent;
+}
 
 .bordes {
   border-left:2px solid #e85151;
@@ -380,9 +386,11 @@ width: 100% !important;
     margin-bottom: 20%;
     padding: 4%;}
 
-  .avbar_rec
-  .nav-link
+  .navbar_rec,
   .footer {
+    background-color: #f5e7de;
+  }
+  .navbar-collapse {
     background-color: transparent;
   }
 
@@ -392,10 +400,9 @@ width: 100% !important;
 
   @media (min-width: 900px) {
 
-    .avbar_rec
-    .nav-link
+    .navbar_rec,
     .footer {
-      background-color: transparent;
+      background-color: #f5e7de;
     }
 
     .titulo_recepcion {

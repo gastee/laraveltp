@@ -56,24 +56,26 @@
           </select>
 
 
-        {{-- <div class="form-group">
+        <div class="form-group">
           <label for="project">Proyecto</label>
 
-            <select type="text" id="project" name="project" class="form-control">
-              @if ($product->project)
-                <option readonly style="background-color: lightgray;" value="{{ $product->project_id }}" selected>{{ $product->project->name }}</option>
+            <select  readonly style="background-color: lightgray;" type="text" id="project" name="project" class="form-control">
+              @if ($product->project_id)
+                <option value="{{ $product->project_id }}" selected>{{ $product->project->name }}</option>
                 @else
-                  @foreach ($projects as $Proj)
-                  <option value="{{ $Proj->project_id }}">{{ $Proj->name }}</option>
-                @endforeach
+                <option value="">Proyecto</option>
               @endif
-          </select> --}}
+          </select>
 
 
             <div class="form-group">
               <label>Danos una breve descripción de tu producto y su estado</label>
                <div class="col-sm-8">
-                <textarea class= "text-area" name="description" rows="3" cols="100"></textarea>
+                 @if ($product->description)
+                   <textarea class= "text-area" name="description" rows="3" cols="100">{{$product->description}}</textarea>
+                   @else
+                     <textarea class= "text-area" name="description" rows="3" cols="100"></textarea>
+                @endif
               </div>
             </div>
 
@@ -96,6 +98,11 @@
               @else
               <button type="submit" class="btn a_btn">Donar producto</button>
               @endif
+              <form class="" action="/product/delete" method="POST" >
+                {{method_field('put')}}
+                @csrf
+                <button type="submit" action="/product/delete" class="btn a_btn">Eliminar producto</button>
+              </form>
             </div>
 
         </div>
